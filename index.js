@@ -1,2 +1,2 @@
 // Entry point for finance app
-require('./app/index,js')
+require('./app/index.js')
