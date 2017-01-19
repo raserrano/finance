@@ -1,10 +1,11 @@
 {
   "name": "finance",
   "version": "0.1.0",
+  "private": true,
   "description": "Financial advisor",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node ./bin/www",
     "test": "mocha test"
   },
   "repository": {
@@ -29,6 +30,14 @@
     "mocha": "^3.2.0"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "^4.14.0",
+    "jade": "~1.11.0",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.7.7",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.0"
   }
 }
