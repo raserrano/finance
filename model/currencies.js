@@ -3,8 +3,6 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 
-// mongoose.connect(config.database.uri_dev);
-
 var currencySchema = new Schema({
   buy: { type: Number, required: true},
   sell: { type: Number, required: true},

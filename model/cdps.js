@@ -3,8 +3,6 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 
-mongoose.connect(config.database.uri_dev);
-
 var cdpSchema = new Schema({
   amount: { type: Number, required: true},
   days: { type: Number, required: true},

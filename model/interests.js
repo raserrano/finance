@@ -3,8 +3,6 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 
-mongoose.connect(config.database.uri_dev);
-
 var interestSchema = new Schema({
   period: { type: Number, required: true},
   rate: { type: Number, required: true},
