@@ -4,11 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+// Models Section
 var db = require('./model/db');
 var currency = require('./model/currencies');
+var cdp = require('./model/cdps');
+
+// Routes & Controllers
 var index = require('./routes/index');
 var users = require('./routes/users');
 var currencies = require('./routes/currencies');
+var cdps = require('./routes/cdps');
 
 var app = express();
 
@@ -16,7 +22,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
+// TODO Generate favicon, logo and design
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
