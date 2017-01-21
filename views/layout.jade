@@ -5,4 +5,17 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block navigation
+      ul.nav
+        li
+          a(href="/currencies") Currencies
+        li
+          a(href="/cdps") CDP's
+        li
+          a(href="/about") About
+        li
+          a(href="/contact") Contact
     block content
+    block footer
+      ul.footer
+        li
+          a(href="https://github.com/raserrano/finance") Author: Roberto Serrano Ruiz
