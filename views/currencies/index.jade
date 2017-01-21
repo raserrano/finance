@@ -6,16 +6,7 @@ block content
     ul
         - each currency, i in currencies
             li
-                = currency.name
-                = currency.badge
-                = currency.dob
-                = currency.isloved
-                = currency._id
-                form(action='/currencies/#{currency._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
-                    input(type='hidden',value='DELETE',name='_method')
-                    button(type='submit').
-                        Delete
-                p 
-                    a(href='/currencies/#{currency._id}/edit') Edit
-                p
-                    a(href='/currencies/#{currency._id}') Show
+                input(type='readonly',value=currency.buy)
+                input(type='readonly',value=currency.sell)
+                input(type='readonly',value=currency.created_at)
+                input(type='readonly',value=currency._id)
