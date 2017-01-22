@@ -1,15 +1,36 @@
 extends ../layout
 
 block content
-    h1.
-         #{title}
-    ul
-        - each cdp, i in cdps
-            li
-                input(type='readonly',value=cdp.amount)
-                input(type='readonly',value=cdp.days)
-                input(type='readonly',value=cdp.interest)
-                input(type='readonly',value=cdp.active)
-                input(type='readonly',value=cdp.created_at)
-                input(type='readonly',value=cdp.finish_a)
-                input(type='readonly',value=cdp._id)
+  h1.
+    #{title}
+  ul
+    - each cdp, i in cdps
+      li
+        input(type='readonly',value=cdp.amount)
+        input(type='readonly',value=cdp.days)
+        input(type='readonly',value=cdp.interest)
+        input(type='readonly',value=cdp.active)
+        input(type='readonly',value=cdp.created_at)
+        input(type='readonly',value=cdp.finish_at)
+        input(type='readonly',value=cdp._id)
+    div.add_cdp
+      form(name="add_cdp", method="post")
+        div.input
+            span.label Amount
+            input(type='text',id='amount', name='amount')
+        div.input
+            span.label Days
+            input(type="text", name="days")
+        div.input
+            span.label Interest
+            input(type="text", name="interest")
+        div.input
+            span.label Active
+            input(type="text", name="active")
+        div.input
+            span.label Finish At
+            input(type="text", name="finish_at")
+
+        div.actions
+            input(type="submit", value="add")
+      a(href='#',onclick='saveCDP();') Add CDP
