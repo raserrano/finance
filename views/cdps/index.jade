@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  h1.
+    #{title}
+  ul
+    - each cdp, i in cdps
+      div.row
+        form(name='update', method='post')
+        input(type='hidden',value=cdp._id)
+        input(type='text',value=cdp.amount)
+        input(type='text',value=cdp.days)
+        input(type='text',value=cdp.interest)
+        input(type='text',value=cdp.active)
+        input(type='text',value=cdp.created_at)
+        input(type='text',value=cdp.finish_at)
+        input(type='text',value=cdp._id)
+        a(href='#',onclick='editCDP();') Edit
+        a(href='#',onclick='deleteCDP();') Delete
+    div.add_cdp
+      form(name="add_cdp", method="post")
+        div.input
+            span.label Amount
+            input(type='text',id='amount', name='amount')
+        div.input
+            span.label Days
+            input(type="text", name="days")
+        div.input
+            span.label Interest
+            input(type="text", name="interest")
+        div.input
+            span.label Active
+            input(type="text", name="active")
+        div.actions
+          a(href='#',onclick='saveCDP();') Add CDP
