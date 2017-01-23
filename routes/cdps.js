@@ -37,20 +37,18 @@ router.route('/')
     //POST a new Cdp
     .post(function(req, res) {
         // Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
-        var name = req.body.name;
-        var badge = req.body.badge;
-        var dob = req.body.dob;
-        var company = req.body.company;
-        var isloved = req.body.isloved;
-        //call the create function for our database
+        var amount = req.body.amount;
+        var days = req.body.days;
+        var interest = req.body.interest;
+        var active = req.body.active;
         mongoose.model('Cdp').create({
-            name : name,
-            badge : badge,
-            dob : dob,
-            isloved : isloved
-        }, function (err, Cdp) {
+            amount: amount,
+            days: days,
+            interest: interest,
+            active: active
+          }, function (err, Cdp) {
               if (err) {
-                  res.send("There was a problem adding the information to the database.");
+                  res.send(err);
               } else {
                   //Cdp has been created
                   console.log('POST creating new Cdp: ' + Cdp);

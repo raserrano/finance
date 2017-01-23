@@ -5,14 +5,18 @@ block content
     #{title}
   ul
     - each cdp, i in cdps
-      li
-        input(type='readonly',value=cdp.amount)
-        input(type='readonly',value=cdp.days)
-        input(type='readonly',value=cdp.interest)
-        input(type='readonly',value=cdp.active)
-        input(type='readonly',value=cdp.created_at)
-        input(type='readonly',value=cdp.finish_at)
-        input(type='readonly',value=cdp._id)
+      div.row
+        form(name='update', method='post')
+        input(type='hidden',value=cdp._id)
+        input(type='text',value=cdp.amount)
+        input(type='text',value=cdp.days)
+        input(type='text',value=cdp.interest)
+        input(type='text',value=cdp.active)
+        input(type='text',value=cdp.created_at)
+        input(type='text',value=cdp.finish_at)
+        input(type='text',value=cdp._id)
+        a(href='#',onclick='editCDP();') Edit
+        a(href='#',onclick='deleteCDP();') Delete
     div.add_cdp
       form(name="add_cdp", method="post")
         div.input
@@ -27,10 +31,5 @@ block content
         div.input
             span.label Active
             input(type="text", name="active")
-        div.input
-            span.label Finish At
-            input(type="text", name="finish_at")
-
         div.actions
-            input(type="submit", value="add")
-      a(href='#',onclick='saveCDP();') Add CDP
+          a(href='#',onclick='saveCDP();') Add CDP
