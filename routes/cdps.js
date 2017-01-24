@@ -8,9 +8,9 @@ router.use(bodyParser.urlencoded({ extended: true }))
 router.use(bodyParser.json());
 router.use(methodOverride(function(req, res){
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-    var method = req.body._method
-    delete req.body._method
-    return method
+    var method = req.body._method;
+    delete req.body._method;
+    return method;
   }
 }))
 
@@ -34,7 +34,7 @@ router.route('/')
         });
       }     
     });
-})
+});
 
 router.route('/add')
   .post(function(req, res) {
@@ -58,40 +58,8 @@ router.route('/add')
           }
         });
       }
-    })
+    });
 });
-
-  //       var amount = req.body.amount;
-  //       var days = req.body.days;
-  //       var interest = req.body.interest;
-  //       var active = req.body.active;
-  //       mongoose.model('Cdp').create({
-  //           amount: amount,
-  //           days: days,
-  //           interest: interest,
-  //           active: active
-  //         }, function (err, Cdp) {
-  //             if (err) {
-  //                 res.send(err);
-  //             } else {
-  //                 //Cdp has been created
-  //                 console.log('POST creating new Cdp: ' + Cdp);
-  //                 res.format({
-  //                     //HTML response will set the location and redirect back to the home page. You could also create a 'success' page if that's your thing
-  //                   html: function(){
-  //                       // If it worked, set the header so the address bar doesn't still say /adduser
-  //                       res.location("cdps");
-  //                       // And forward to success page
-  //                       res.redirect("/cdps");
-  //                   },
-  //                   //JSON response will show the newly created Cdp
-  //                   json: function(){
-  //                       res.json(Cdp);
-  //                   }
-  //               });
-  //             }
-  //       })
-    // });
 
 router.route('/delete').post(function(req, res) {
   console.log('Delete action');

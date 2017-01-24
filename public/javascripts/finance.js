@@ -1,28 +1,26 @@
 $(function(){
     $('#addCDP').click(function(e){
         e.preventDefault();
-        request($('#add_cdp'),'add');
+        request($('#add_cdp').serialize(),'add');
     });
     $('#deleteCDP').click(function(e){
         e.preventDefault();
-        request($('#update'),'delete');
+        request($('#update').serialize(),'delete');
     });
     $('#editCDP').click(function(e){
         e.preventDefault();
-        request($('#update'),'edit');
+        request($('#update').serialize(),'edit');
     });
-    function request(form,action){
-        // var query=$(form).serialize();
-        console.log(JSON.stringify(form.serialize()));
-        // $.ajax({
-        //     type: 'POST',
-        //     data: query,
-        //     contentType: 'application/json',
-        //     url: '/cdps/'+action,            
-        //     success: function(data) {
-        //         console.log(JSON.stringify(data));
-        //     }
-        // });
+    function requestAsync(query,action){
+        $.ajax({
+            type: 'POST',
+            data: query,
+            contentType: 'application/json',
+            url: '/cdps/'+action,            
+            success: function(data) {
+                console.log(JSON.stringify(data));
+            }
+        });
     }
     // $('#select_link').click(function(e){
     //     e.preventDefault();
