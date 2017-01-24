@@ -3,17 +3,10 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="/javascripts/jquery.js")
+    script(src="/javascripts/finance.js")
   body
-    block navigation
-      ul.nav
-        li
-          a(href="/currencies") Currencies
-        li
-          a(href="/cdps") CDP's
-        li
-          a(href="/about") About
-        li
-          a(href="/contact") Contact
+    include navigation
     block content
     block footer
       ul.footer

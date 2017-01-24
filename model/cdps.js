@@ -18,6 +18,8 @@ cdpSchema.pre('save', function(next) {
   this.updated_at = currentDate;
   if (!this.created_at)
     this.created_at = currentDate;
+  if(!this.active)
+    this.active = true;
   next();
   console.log('CDP created!');
 });
