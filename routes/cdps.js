@@ -38,10 +38,7 @@ router.route('/')
 
 router.route('/add')
   .post(function(req, res) {
-    console.log('Trying to add CDP');
-    var obj = req.body;
-    console.log(obj);
-    mongoose.model('Cdp').create(obj,function(err,Cdp){
+    mongoose.model('Cdp').create(req.body,function(err,Cdp){
       if(err){
         res.send(err);
       }else{
@@ -63,11 +60,55 @@ router.route('/add')
 
 router.route('/delete').post(function(req, res) {
   console.log('Delete action');
+      mongoose.model('Cdp').findById(req.body.id, function (err, Cdp) {
+          if (err) {
+              return console.error(err);
+          } else {
+              //remove it from Mongo
+              Cdp.remove(function (err, Cdp) {
+                  if (err) {
+                      return console.error(err);
+                  } else {
+                      //Returning success messages saying it was deleted
+                      console.log('DELETE removing ID: ' + Cdp._id);
+                      res.format({
+                          //HTML returns us back to the main page, or you can create a success page
+                            html: function(){
+                                 res.redirect("/cdps");
+                           },
+                           //JSON returns the item with the message that is has been deleted
+                          json: function(){
+                                 res.json({message : 'deleted',
+                                     item : Cdp
+                                 });
+                           }
+                        });
+                  }
+              });
+          }
+      });
 });
+
 router.route('/edit').post(function(req, res) {
   console.log('Edit action');
+        mongoose.model('Cdp').findById(req.id, function (err, cdp) {
+          if (err) {
+              console.log('GET Error: There was a problem retrieving: ' + err);
+          } else {
+              //Return the blob
+              console.log('GET Retrieving ID: ' + cdp._id);
+              res.format({
+                  //HTML response will render the 'edit.jade' template
+                  html: function(){
+                         res.render('cdps');
+                   },
+                   //JSON response will return the JSON output
+                  json: function(){
+                         res.json(cdp);
+                   }
+              });
+          }
+      });
 });
-
-
 
 module.exports = router;
