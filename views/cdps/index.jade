@@ -6,8 +6,8 @@ block content
   ul
     - each cdp, i in cdps
       div.row
-        form(name='update', method='post')
-            input(type='hidden',name='_id',value=cdp._id)
+        form(id='update', name='update', method='post', action='/cdps/delete')
+            input(type='hidden',name='id',value=cdp._id)
             input(type='text',name='amount',value=cdp.amount)
             input(type='text',name='days',value=cdp.days)
             input(type='text',name='interest',value=cdp.interest)
@@ -15,11 +15,11 @@ block content
             input(type='text',name='created_at',value=cdp.created_at)
             input(type='text',name='finish_at',value=cdp.finish_at)
             div.actions
-                a(href='#',id='editCDP') Edit
-                a(href='#',id='deleteCDP') Delete
+                a(href='/',class='editCDP') Edit
+                a(href='/',class='deleteCDP') Delete
                 input(type='submit',value='Delete')
     div.add_cdp
-      form(name='add_cdp', method='post', action='/cdps/add')
+      form(id='add_cdp', name='add_cdp', method='post', action='/cdps/add')
         div.input
             span.label Amount
             input(type='text',id='amount', name='amount')
@@ -33,5 +33,5 @@ block content
             span.label Active
             input(type='text', name='active')
         div.actions
-          a(href='#',id='addCDP') Add CDP
+          a(href='/',class='addCDP') Add CDP
           input(type='submit',value='Add')

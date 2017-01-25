@@ -38,10 +38,7 @@ router.route('/')
 
 router.route('/add')
   .post(function(req, res) {
-    console.log('Trying to add CDP');
-    var obj = req.body;
-    console.log(obj);
-    mongoose.model('Cdp').create(obj,function(err,Cdp){
+    mongoose.model('Cdp').create(req.body,function(err,Cdp){
       if(err){
         res.send(err);
       }else{
@@ -62,12 +59,52 @@ router.route('/add')
 });
 
 router.route('/delete').post(function(req, res) {
-  console.log('Delete action');
+  mongoose.model('Cdp').findById(req.body.id, function (err, cdp) {
+    if (err) {
+      return console.error(err);
+    } else {
+      cdp.remove(function (err, cdp) {
+      if (err) {
+        return console.error(err);
+      } else {
+        res.format({
+          html: function(){
+            res.redirect("/cdps");
+          },
+          json: function(){
+            res.json({message : 'deleted',
+              item : cdp
+            });
+          }
+        });
+        }
+      });
+    }
+  });
 });
+
 router.route('/edit').post(function(req, res) {
-  console.log('Edit action');
+  mongoose.model('Cdp').findById(req.body.id, function (err, cdp) {
+    if (err) {
+      console.log('GET Error: There was a problem retrieving: ' + err);
+    } else {
+      cdp.update(req.body, function (err, cdpID) {
+        if (err) {
+          res.send("There was a problem updating the information to the database: " + err);
+        } 
+        else {
+        res.format({
+          html: function(){
+            res.redirect("/cdps/");
+          },
+          json: function(){
+            res.json(cdp);
+          }
+          });
+        }
+      });
+    }
+  });
 });
-
-
 
 module.exports = router;
