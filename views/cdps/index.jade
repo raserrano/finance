@@ -15,8 +15,8 @@ block content
             input(type='text',name='created_at',value=cdp.created_at)
             input(type='text',name='finish_at',value=cdp.finish_at)
             div.actions
-                a(href='javascript:void(0);',id='editCDP') Edit
-                a(href='javascript:void(0);',id='deleteCDP') Delete
+                a(href='/',class='editCDP') Edit
+                a(href='/',class='deleteCDP') Delete
                 input(type='submit',value='Delete')
     div.add_cdp
       form(id='add_cdp', name='add_cdp', method='post', action='/cdps/add')
@@ -33,5 +33,5 @@ block content
             span.label Active
             input(type='text', name='active')
         div.actions
-          a(href='javascript:void(0);',id='addCDP') Add CDP
+          a(href='/',class='addCDP') Add CDP
           input(type='submit',value='Add')

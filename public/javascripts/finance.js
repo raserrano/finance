@@ -1,19 +1,16 @@
 $(function(){
-    function addCDP(){
-        console.log('Add AJAX');
+    $('.addCDP').on('click',function(event){
         event.preventDefault();
-        requestAsync($('#add_cdp'),'add');
-    };
-    function deleteCDP(){
-        console.log('Delete AJAX');
+        requestAsync($(this).closest('form'),'add');
+    });
+    $('.deleteCDP').on('click',function(event){
         event.preventDefault();
-        requestAsync($('#update'),'delete');
-    };
-    function editCDP(){
-        console.log('Edit AJAX');
+        requestAsync($(this).closest('form'),'delete');
+    });
+    $('.editCDP').on('click',function(event){
         event.preventDefault();
-        requestAsync($('#update'),'edit');
-    };
+        requestAsync($(this).closest('form'),'edit');
+    });
     function requestAsync(query,action){
         console.log(query.serialize());
         $.ajax({
