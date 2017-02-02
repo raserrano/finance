@@ -9,12 +9,14 @@ var bodyParser = require('body-parser');
 var db = require('./model/db');
 var currency = require('./model/currencies');
 var cdp = require('./model/cdps');
+var interest = require('./model/interests');
 
 // Routes & Controllers
 var index = require('./routes/index');
 var users = require('./routes/users');
 var currencies = require('./routes/currencies');
 var cdps = require('./routes/cdps');
+var interests = require('./routes/interests');
 
 var app = express();
 
@@ -34,6 +36,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/currencies', currencies);
 app.use('/cdps', cdps);
+app.use('/interests', interests);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
