@@ -8,10 +8,9 @@ block content
       div.row
         form(id='update', name='update', method='post', action='/interests/delete')
             input(type='hidden',name='id',value=interest._id)
-            input(type='text',name='amount',value=interest.amount)
-            input(type='text',name='days',value=interest.days)
-            input(type='text',name='interest',value=interest.interest)
-            input(type='text',name='active',value=interest.active)
+            input(type='text',name='period',value=interest.period)
+            input(type='text',name='rate',value=interest.rate)
+            input(type='text',name='active',value=interest.active.toString())
             input(type='text',name='created_at',value=interest.created_at)
             input(type='text',name='finish_at',value=interest.finish_at)
             div.actions
@@ -21,14 +20,11 @@ block content
     div.add_interest
       form(id='add_interest', name='add_interest', method='post', action='/interests/add')
         div.input
-            span.label Amount
-            input(type='text',id='amount', name='amount')
+            span.label Period
+            input(type='text', name='period')
         div.input
-            span.label Days
-            input(type='text', name='days')
-        div.input
-            span.label Interest
-            input(type='text', name='interest')
+            span.label Rate
+            input(type='text', name='rate')
         div.input
             span.label Active
             input(type='text', name='active')
