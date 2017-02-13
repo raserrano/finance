@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  h1.
+    #{title}
+  ul
+    - each interest, i in interests
+      div.row
+        form(id='update', name='update', method='post', action='/interests/delete')
+            input(type='hidden',name='id',value=interest._id)
+            input(type='text',name='period',value=interest.period)
+            input(type='text',name='rate',value=interest.rate)
+            input(type='text',name='active',value=interest.active.toString())
+            input(type='text',name='created_at',value=interest.created_at)
+            input(type='text',name='finish_at',value=interest.finish_at)
+            div.actions
+                a(href='/',class='editInterest') Edit
+                a(href='/',class='deleteInterest') Delete
+                input(type='submit',value='Delete')
+    div.add_interest
+      form(id='add_interest', name='add_interest', method='post', action='/interests/add')
+        div.input
+            span.label Period
+            input(type='text', name='period')
+        div.input
+            span.label Rate
+            input(type='text', name='rate')
+        div.input
+            span.label Active
+            input(type='text', name='active')
+        div.actions
+          a(href='/',class='addInterest') Add Interest
+          input(type='submit',value='Add')
