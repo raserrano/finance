@@ -23,7 +23,7 @@ router.route('/')
         res.format({
           html: function(){
             res.render('interests/index', {
-            title: 'All CDPs',
+            title: 'Active Interest rates',
             "interests" : interests
             });
           },
