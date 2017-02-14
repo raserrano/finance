@@ -1,20 +1,38 @@
 extends ../layout
 
 block content
-  h1.
+  h2.
     #{title}
-  ul
-    - each cdp, i in cdps
-      div.row
-        form(id='update', name='update', method='post', action='/cdps/delete')
-            input(type='hidden',name='id',value=cdp._id)
-            input(type='text',name='amount',value=cdp.amount)
-            input(type='text',name='days',value=cdp.days)
-            input(type='text',name='interest',value=cdp.interest)
-            input(type='text',name='active',value=cdp.active)
-            input(type='text',name='created_at',value=cdp.created_at)
-            input(type='text',name='finish_at',value=cdp.finish_at)
-            div.actions
+
+  div.table-responsive
+    table.table.table-striped
+      thead
+        tr
+          th Amount
+          th Days
+          th Interest
+          th Active
+          th Creation date
+          th Finish date
+          th Actions
+      tbody
+        tr
+          - each cdp, i in cdps
+            form(id='update', name='update', method='post', action='/cdps/delete')
+              td
+                input(type='hidden',name='id',value=cdp._id)
+                input(type='text',name='amount',value=cdp.amount)
+              td
+                input(type='text',name='days',value=cdp.days)
+              td
+                input(type='text',name='interest',value=cdp.interest)
+              td
+                input(type='text',name='active',value=cdp.active)
+              td
+                input(type='text',name='created_at',value=cdp.created_at)
+              td
+                input(type='text',name='finish_at',value=cdp.finish_at)
+              td
                 a(href='/',class='editCDP') Edit
                 a(href='/',class='deleteCDP') Delete
                 input(type='submit',value='Delete')
