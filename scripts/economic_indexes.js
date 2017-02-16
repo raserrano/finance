@@ -13,7 +13,7 @@ function saveCurrency(body){
   mongoose.model('Currency').create(currency,function(err){
     if (err) throw err;
   });
-  mongoose.connection.close()
+  mongoose.connection.close();
 }
 
 function callback(err, response, body){

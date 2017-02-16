@@ -22,6 +22,6 @@ var config = {
     agent:false,
     followAllRedirects:true
   }
-}
+};
 
 module.exports = config;
