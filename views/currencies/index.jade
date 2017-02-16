@@ -1,12 +1,23 @@
 extends ../layout
 
 block content
-    h1.
-         #{title}
-    ul
+  h2 #{title}
+
+  div.table-responsive
+  table.table.table-striped
+    thead
+      tr
+        th Sell
+        th Buy
+        th Date
+    tbody
         - each currency, i in currencies
-            li
-                input(type='readonly',value=currency.buy)
-                input(type='readonly',value=currency.sell)
-                input(type='readonly',value=currency.created_at)
-                input(type='readonly',value=currency._id)
+          tr
+            td
+              input(type='readonly',value=currency.sell)
+            td
+              input(type='readonly',value=currency.buy)
+            td
+              input(type='readonly',value=currency.created_at)
+            td
+              input(type='readonly',value=currency._id)
