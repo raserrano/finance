@@ -9,7 +9,8 @@ function saveCurrency(body){
     buy: data.TipoCambioCompra.replace(/,/g , "."),
     sell: data.TipoCambioVenta.replace(/,/g , "."),
   });
-  mongoose.connect(config.database.uri_dev);
+
+  mongoose.connect(config.database.conn(config.database.options));
   mongoose.model('Currency').create(currency,function(err){
     if (err) throw err;
   });

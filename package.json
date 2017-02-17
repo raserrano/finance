@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/raserrano/finance#readme",
   "devDependencies": {
+    "cheerio": "^0.22.0",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0"
   },

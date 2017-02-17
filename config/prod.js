@@ -7,7 +7,7 @@ module.exports = {
       auth: false,
       user: 'mondo',
       pass: 'mongo',
-      host: '127.0.0.1',
+      host: '192.168.0.107',
       port: '27017',
       database: 'money',
     },
@@ -22,28 +22,10 @@ module.exports = {
     },
   },
   webservice:{
-    url:'http://www.bccr.fi.cr/Indicadores/IndicadoresJSON.ashx',
+    url:"http://www.bccr.fi.cr/Indicadores/IndicadoresJSON.ashx",
     port:80,
     method:'GET',
     agent:false,
     followAllRedirects:true
-  },
-  metals:{
-    gold:{
-      url:'http://www.indexmundi.com/commodities/?commodity=silver',
-      port:80,
-      method:'GET',
-      agent:false,
-      followAllRedirects:true,
-      headers: { 'Content-Type': 'application/json' }
-    },
-    silver:{
-      url:'http://www.indexmundi.com/commodities/?commodity=silver',
-      port:80,
-      method:'GET',
-      agent:false,
-      followAllRedirects:true,
-      headers: { 'Content-Type': 'application/json' }
-    }
   }
 };
