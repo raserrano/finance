@@ -7,7 +7,7 @@ module.exports = {
       auth: false,
       user: 'mondo',
       pass: 'mongo',
-      host: '127.0.0.1',
+      host: '192.168.0.107',
       port: '27017',
       database: 'money',
     },
