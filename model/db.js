@@ -1,3 +1,4 @@
-// var config = require('../config/dev.js');
+var config = require('../config/prod.js');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/money');
+
+mongoose.connect(config.database.conn(config.database.options));
