@@ -1,6 +1,6 @@
 var request = require('request');
 var mongoose = require('mongoose');
-var config = require('../config/dev.js');
+var config = require('../config/prod.js');
 var Currency = require('../model/currencies');
 
 function saveCurrency(body){
@@ -9,7 +9,8 @@ function saveCurrency(body){
     buy: data.TipoCambioCompra.replace(/,/g , "."),
     sell: data.TipoCambioVenta.replace(/,/g , "."),
   });
-  mongoose.connect(config.database.uri_dev);
+
+  mongoose.connect(config.database.conn(config.database.options));
   mongoose.model('Currency').create(currency,function(err){
     if (err) throw err;
   });
