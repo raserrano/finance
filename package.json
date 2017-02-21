@@ -41,6 +41,7 @@
     "method-override": "^2.3.7",
     "mongoose": "^4.7.7",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "then-request": "^2.2.0"
   }
 }

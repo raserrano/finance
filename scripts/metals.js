@@ -1,27 +1,20 @@
 var request = require('request');
 var cheerio = require('cheerio');
-var mongoose = require('mongoose');
-var config = require('../config/current'),
-  Metal = Team = mongoose.model('Metal');
-//require('../model/metals');
-
+var config = require('../config/current');
+var db = require('../model/db');
 function saveMetal(body){
   const $ = cheerio.load(body)
 
-  var metal = new Metal({
+  var metal = {
     price: $('.dailyPrice').text().trim().replace(/,/g , ""),
-    type: 'Troy Ounce'
-  });
+    type: 'Troy Ounce',
+    metal: $('#hidCommodity').attr('value').trim().replace()
+  };
 
-  Metal.create(metal,function(err){
+  db.model('Metal').create(metal,function(err){
     if (err) throw err;
+    db.connection.close();
   });
-
-  // mongoose.connect(config.database.conn(config.database.options));
-  // mongoose.model('Metal').create(metal,function(err){
-  //   if (err) throw err;
-  // });
-  // mongoose.connection.close();
 }
 
 function callback(err, response, body){
@@ -30,5 +23,7 @@ function callback(err, response, body){
   }
   saveMetal(body);
 }
-request.get(config.metals.gold,callback);
-request.get(config.metals.silver,callback);
+config.webservice.url = config.metals.gold;
+request.get(config.webservice,callback);
+config.webservice.url = config.metals.silver;
+request.get(config.webservice,callback);

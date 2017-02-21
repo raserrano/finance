@@ -5,8 +5,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var metalSchema = new Schema({
-  price: { type: Number, required: true},
+  price: { type: String, required: true},
   type: { type: String, required: true},
+  metal: String,
   value: Number,
   created_at: Date,
 });

@@ -1,7 +1,7 @@
 var config = require('../config/current');
 var mongoose = require('mongoose');
 
-mongoose.connect(config.database.conn(config.database.options));
+var db = mongoose.connect(config.database.conn(config.database.options));
 
 // CONNECTION EVENTS
 // When successfully connected
@@ -32,3 +32,5 @@ require('../model/currencies');
 require('../model/cdps');
 require('../model/interests');
 require('../model/metals');
+
+module.exports = db;

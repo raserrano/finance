@@ -16,7 +16,7 @@ router.use(methodOverride(function(req, res){
 
 router.route('/')
     .get(function(req, res, next) {
-        mongoose.model('Currency').find({}, function (err, currencies) {
+        mongoose.model('Currency').find({}).sort({created_at:-1}).exec(function (err, currencies) {
               if (err) {
                   return console.error(err);
               } else {

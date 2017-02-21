@@ -29,21 +29,7 @@ module.exports = {
     followAllRedirects:true
   },
   metals:{
-    gold:{
-      url:'http://www.indexmundi.com/commodities/?commodity=silver',
-      port:80,
-      method:'GET',
-      agent:false,
-      followAllRedirects:true,
-      headers: { 'Content-Type': 'application/json' }
-    },
-    silver:{
-      url:'http://www.indexmundi.com/commodities/?commodity=silver',
-      port:80,
-      method:'GET',
-      agent:false,
-      followAllRedirects:true,
-      headers: { 'Content-Type': 'application/json' }
-    }
+    gold:'http://www.indexmundi.com/commodities/?commodity=gold',
+    silver:'http://www.indexmundi.com/commodities/?commodity=silver',
   }
 };
