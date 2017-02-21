@@ -1,8 +1,9 @@
 var request = require('request');
-var mongoose = require('mongoose');
 var cheerio = require('cheerio');
-var config = require('../config/dev.js');
-var Metal = require('../model/metals');
+var mongoose = require('mongoose');
+var config = require('../config/current'),
+  Metal = Team = mongoose.model('Metal');
+//require('../model/metals');
 
 function saveMetal(body){
   const $ = cheerio.load(body)
@@ -12,11 +13,15 @@ function saveMetal(body){
     type: 'Troy Ounce'
   });
 
-  mongoose.createConnection(config.database.conn(config.database.options));
-  mongoose.model('Metal').create(metal,function(err){
+  Metal.create(metal,function(err){
     if (err) throw err;
   });
-  mongoose.connection.close();
+
+  // mongoose.connect(config.database.conn(config.database.options));
+  // mongoose.model('Metal').create(metal,function(err){
+  //   if (err) throw err;
+  // });
+  // mongoose.connection.close();
 }
 
 function callback(err, response, body){

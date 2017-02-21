@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 
 var currencySchema = new Schema({
@@ -19,6 +19,4 @@ currencySchema.pre('save', function(next) {
   console.log('Currency created!');
 });
 
-var Currency = mongoose.model('Currency', currencySchema);
-
-module.exports = Currency;
+module.exports = mongoose.model('Currency', currencySchema);

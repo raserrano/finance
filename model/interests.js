@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 
 var interestSchema = new Schema({
@@ -22,6 +22,4 @@ interestSchema.pre('save', function(next) {
   console.log('Interest created!');
 });
 
-var Interest = mongoose.model('Interest', interestSchema);
-
-module.exports = Interest;
+module.exports = mongoose.model('Interest', interestSchema);

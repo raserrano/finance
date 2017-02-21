@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 
 var cdpSchema = new Schema({
@@ -24,6 +24,4 @@ cdpSchema.pre('save', function(next) {
   console.log('CDP created!');
 });
 
-var Cdp = mongoose.model('Cdp', cdpSchema);
-
-module.exports = Cdp;
+module.exports = mongoose.model('Cdp', cdpSchema);

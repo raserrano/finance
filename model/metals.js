@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
+// TODO connection issue
+// mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 
 var metalSchema = new Schema({
@@ -18,6 +19,4 @@ metalSchema.pre('save', function(next) {
   console.log('Metal created!');
 });
 
-var Metal = mongoose.model('Metal', metalSchema);
-
-module.exports = Metal;
+module.exports = mongoose.model('Metal', metalSchema);
