@@ -28,21 +28,21 @@ function getMonth(mon){
   //Stupid month naming
   var months = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "set", "oct", "nov", "dic"];
   var value = null;
-  if(undefined != mon){
+  if(undefined !== mon){
     value = months.indexOf(mon.toLowerCase())+1;
   }
   return value;
 }
 
 function saveCurrency(body){
-  const $ = cheerio.load(body)
+  var $ = cheerio.load(body);
 
   var currency = {
     buy: $(buy_locator).text().trim().replace(/,/g , "."),
     sell: $(sell_locator).text().trim().replace(/,/g , "."),
     created_at: getDate($(date_locator).text().trim()),
   };
-  if(currency.created_at != null&&currency.buy&&currency.sell){
+  if(currency.created_at !== null&&currency.buy&&currency.sell){
     db.model('Currency').create(currency,function(err){
       if (err){
         console.log(currency);

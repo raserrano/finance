@@ -3,7 +3,7 @@ var cheerio = require('cheerio');
 var config = require('../config/current');
 var db = require('../model/db');
 function saveMetal(body){
-  const $ = cheerio.load(body)
+  var $ = cheerio.load(body);
 
   var metal = {
     price: $('.dailyPrice').text().trim().replace(/,/g , ""),
