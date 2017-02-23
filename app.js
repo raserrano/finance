@@ -5,11 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// Models Section
+// Models & Database
 var db = require('./model/db');
-var currency = require('./model/currencies');
-var cdp = require('./model/cdps');
-var interest = require('./model/interests');
 
 // Routes & Controllers
 var index = require('./routes/index');

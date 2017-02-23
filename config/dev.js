@@ -22,10 +22,14 @@ module.exports = {
     },
   },
   webservice:{
-    url:"http://www.bccr.fi.cr/Indicadores/IndicadoresJSON.ashx",
+    url:'http://www.bccr.fi.cr/Indicadores/IndicadoresJSON.ashx',
     port:80,
     method:'GET',
     agent:false,
     followAllRedirects:true
+  },
+  metals:{
+    gold:'http://www.indexmundi.com/commodities/?commodity=gold',
+    silver:'http://www.indexmundi.com/commodities/?commodity=silver',
   }
 };
