@@ -18,7 +18,6 @@ nodemon ./bin/wwww
 - [x] Interest
 - [x] Currencies
 - [x] Automated task for daily update of Currency.
-- [] Metals.
+- [X] Metals.
 - [] About Page and contact page.
 - [] Users and Session
-- [] 
