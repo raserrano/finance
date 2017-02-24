@@ -9,7 +9,6 @@ function saveCurrency(body){
     sell: data.TipoCambioVenta.replace(/,/g , "."),
   };
 
-  console.log(currency);
   db.model('Currency').create(currency,function(err){
     if (err) throw err;
     db.connection.close();

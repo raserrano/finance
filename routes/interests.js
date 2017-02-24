@@ -16,23 +16,24 @@ router.use(methodOverride(function(req, res){
 
 router.route('/')
   .get(function(req, res, next) {
-    mongoose.model('Interest').find({}, function (err, interests) {
-      if (err) {
-        return console.error(err);
-      } else {
-        res.format({
-          html: function(){
-            res.render('interests/index', {
-            title: 'Active Interest rates',
-            "interests" : interests
-            });
-          },
-          //JSON response will show all interests in JSON format
-          json: function(){
-            res.json(interests);
-          }
-        });
-      }     
+    mongoose.model('Interest').find({}).sort({created_at:-1}).exec(
+      function (err, interests) {
+        if (err) {
+          return console.error(err);
+        } else {
+          res.format({
+            html: function(){
+              res.render('interests/index', {
+              title: 'Active Interest rates',
+              "interests" : interests
+              });
+            },
+            //JSON response will show all interests in JSON format
+            json: function(){
+              res.json(interests);
+            }
+          });
+        }
     });
 });
 

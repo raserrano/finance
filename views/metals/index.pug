@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  h2 #{title}
+
+  div.table-responsive
+    table.table.table-striped
+      thead
+        tr
+          th Metal
+          th Type
+          th Price
+          th Value
+          th Creation date
+      tbody
+        each metal, i in metals
+          tr
+            td
+              input(type='readonly',value=metal.metal)
+            td
+              input(type='readonly',value=metal.type)
+            td
+              input(type='readonly',value=metal.price)
+            td
+              input(type='readonly',value=metal.value)
+            td
+              input(type='readonly',value=metal.created_at)

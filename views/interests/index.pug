@@ -4,7 +4,7 @@ block content
   h1.
     #{title}
   ul
-    - each interest, i in interests
+    each interest, i in interests
       div.row
         form(id='update', name='update', method='post', action='/interests/delete')
             input(type='hidden',name='id',value=interest._id)
