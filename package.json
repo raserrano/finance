@@ -16,6 +16,7 @@
     "finance",
     "management",
     "money",
+    "metals",
     "fi",
     "financial",
     "advisor"
@@ -37,11 +38,10 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "^4.14.0",
-    "jade": "~1.11.0",
     "method-override": "^2.3.7",
     "mongoose": "^4.7.7",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0",
-    "then-request": "^2.2.0"
+    "pug": "^2.0.0-beta11",
+    "serve-favicon": "~2.3.0"
   }
 }

@@ -12,9 +12,15 @@ function saveMetal(body){
   };
 
   db.model('Metal').create(metal,function(err){
-    if (err) throw err;
-    db.connection.close();
+    if (err){
+      throw err;
+    }else{
+      closeDB();
+    }
   });
+}
+function closeDB(){
+  db.connection.close();
 }
 
 function callback(err, response, body){
@@ -26,4 +32,8 @@ function callback(err, response, body){
 config.webservice.url = config.metals.gold;
 request.get(config.webservice,callback);
 config.webservice.url = config.metals.silver;
+request.get(config.webservice,callback);
+config.webservice.url = config.metals.aluminum;
+request.get(config.webservice,callback);
+config.webservice.url = config.metals.copper;
 request.get(config.webservice,callback);

@@ -16,7 +16,7 @@ block content
           th Actions
       tbody
         tr
-          - each cdp, i in cdps
+          each cdp, i in cdps
             form(id='update', name='update', method='post', action='/cdps/delete')
               td
                 input(type='hidden',name='id',value=cdp._id)
