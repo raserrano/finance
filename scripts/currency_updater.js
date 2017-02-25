@@ -8,17 +8,17 @@ var buy_locator = '#theTable400 > tr:nth-child(2) > td:nth-child(2)';
 var sell_locator = '#theTable400 > tr:nth-child(2) > td:nth-child(3)';
 
 function getURL(year, counter) {
-  var base_url = 'http://indicadoreseconomicos.bccr.fi.cr/'
-    + 'indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx';
+  var base_url = 'http://indicadoreseconomicos.bccr.fi.cr/' +
+    'indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx';
   var request = null;
   if (counter != 1) {
-    request = base_url
-      + '?CodCuadro=400&Idioma=1&FecInicial=' + year
-      + '/01/01&FecFinal="+(year+1)+"/01/01&Filtro=' + counter;
+    request = base_url +
+      '?CodCuadro=400&Idioma=1&FecInicial=' + year +
+      '/01/01&FecFinal="+(year+1)+"/01/01&Filtro=' + counter;
   } else {
-    request = base_url
-      + '?CodCuadro=400&Idioma=1&FecInicial=' + year
-      + '/01/01&FecFinal=' + year + '/01/01&Filtro=' + counter;
+    request = base_url +
+      '?CodCuadro=400&Idioma=1&FecInicial=' + year +
+      '/01/01&FecFinal=' + year + '/01/01&Filtro=' + counter;
   }
   return request;
 }

@@ -6,8 +6,8 @@ var db = mongoose.connect(config.database.conn(config.database.options));
 // CONNECTION EVENTS
 // When successfully connected
 mongoose.connection.on('connected', function() {
-  console.log('Mongoose default connection open to '
-    + config.database.conn(config.database.options));
+  console.log('Mongoose default connection open to ' +
+    config.database.conn(config.database.options));
 });
 
 // If the connection throws an error

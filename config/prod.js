@@ -7,19 +7,19 @@ module.exports = {
       auth: false,
       user: 'mondo',
       pass: 'mongo',
-      host: '192.168',
+      host: '192.168.0.107',
       port: '27017',
       database: 'money',
     },
     conn: function(database) {
       var uri = '';
       if (!database.auth) {
-        uri = 'mongodb://' + database.host + ':'
-          + database.port + '/' + database.database;
+        uri = 'mongodb://' + database.host + ':' +
+          database.port + '/' + database.database;
       } else {
-        uri = 'mongodb://' + database.username + ':'
-          + database.password + '@' + database.host + ':'
-          + database.port + '/' + database.database;
+        uri = 'mongodb://' + database.username + ':' +
+          database.password + '@' + database.host + ':' +
+          database.port + '/' + database.database;
       }
       return uri.toString();
     },

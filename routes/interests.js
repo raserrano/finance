@@ -88,8 +88,8 @@ router.route('/edit').post(function(req, res) {
       interest.update(req.body, function(err, interestID) {
         if (err) {
           res.send(
-            'There was a problem updating the information to the database: '
-            + err
+            'There was a problem updating the information to the database: ' +
+            err
             );
         } else {
           res.format({

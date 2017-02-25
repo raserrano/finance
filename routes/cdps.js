@@ -86,8 +86,8 @@ router.route('/edit').post(function(req, res) {
       cdp.update(req.body, function(err, cdpID) {
         if (err) {
           res.send(
-            'There was a problem updating the information to the database: '
-            + err
+            'There was a problem updating the information to the database: ' +
+            err
           );
         } else {
           res.format({

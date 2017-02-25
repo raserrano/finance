@@ -14,12 +14,12 @@ module.exports = {
     conn: function(database) {
       var uri = '';
       if (!database.auth) {
-        uri = 'mongodb://' + database.host + ':'
-          + database.port + '/' + database.database;
+        uri = 'mongodb://' + database.host + ':' +
+          database.port + '/' + database.database;
       } else {
-        uri = 'mongodb://' + database.username + ':'
-          + database.password + '@' + database.host + ':'
-          + database.port + '/' + database.database;
+        uri = 'mongodb://' + database.username + ':' +
+          database.password + '@' + database.host + ':' +
+          database.port + '/' + database.database;
       }
       return uri.toString();
     },
