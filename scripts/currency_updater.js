@@ -14,7 +14,7 @@ function getURL(year, counter) {
   if (counter != 1) {
     request = base_url +
       '?CodCuadro=400&Idioma=1&FecInicial=' + year +
-      '/01/01&FecFinal="+(year+1)+"/01/01&Filtro=' + counter;
+      '/01/01&FecFinal='+(year+1)+'/01/01&Filtro=' + counter;
   } else {
     request = base_url +
       '?CodCuadro=400&Idioma=1&FecInicial=' + year +
