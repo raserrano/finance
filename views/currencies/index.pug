@@ -2,7 +2,10 @@ extends ../layout
 
 block content
   h2 #{title}
-
+  script.
+    var index_sell = [];
+    var index_buy = [];
+    var dates = [];
   div.table-responsive
   table.table.table-striped
     thead
@@ -11,13 +14,30 @@ block content
         th Buy
         th Date
     tbody
-        each currency, i in currencies
-          tr
-            td
-              input(type='readonly',value=currency.sell)
-            td
-              input(type='readonly',value=currency.buy)
-            td
-              input(type='readonly',value=currency.created_at)
-            td
-              input(type='readonly',value=currency._id)
+      each currency, i in currencies
+        script.
+          date = "#{currency.created_at}";
+          var label = "#{currency.created_at.getMonth()}/#{currency.created_at.getDay()}";
+          dates.push(label);
+          index_sell.push("#{currency.sell}");
+          index_buy.push("#{currency.buy}");
+        tr
+          td
+            input(type='readonly',value=currency.sell)
+          td
+            input(type='readonly',value=currency.buy)
+          td
+            input(type='readonly',value=currency.created_at)
+          td
+            input(type='readonly',value=currency._id)
+  div.ct-chart
+  script.
+    new Chartist.Line('.ct-chart', {
+      labels: [dates],
+      series: [index_sell,index_buy]
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
