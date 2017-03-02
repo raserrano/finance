@@ -3,9 +3,9 @@ extends ../layout
 block content
   h2 #{title}
   script.
-    var categories = ['Sell'];
-    var dataset = [];
-    var date;
+    var index_sell = [];
+    var index_buy = [];
+    var dates = [];
   div.table-responsive
   table.table.table-striped
     thead
@@ -18,7 +18,9 @@ block content
         script.
           date = "#{currency.created_at}";
           var label = "#{currency.created_at.getMonth()}/#{currency.created_at.getDay()}";
-          dataset.push({'label':label,'value':"#{currency.sell}"});
+          dates.push(label);
+          index_sell.push("#{currency.sell}");
+          index_buy.push("#{currency.buy}");
         tr
           td
             input(type='readonly',value=currency.sell)
@@ -28,27 +30,14 @@ block content
             input(type='readonly',value=currency.created_at)
           td
             input(type='readonly',value=currency._id)
-  div#chart-location
-    script.
-      var chartProperties = {
-        "caption": "USD vs CRC",
-        "numberprefix": "Rs",
-        "xAxisName": "Month",
-        "yAxisName": "Price"
-      };
-      var categoriesArray = [{
-        "category" : categories
-      }];
-      var lineChart = new FusionCharts({
-        type: 'msline',
-        renderAt: 'chart-location',
-        width: '800',
-        height: '600',
-        dataFormat: 'json',
-        dataSource: {
-          chart: chartProperties,
-          categories : categoriesArray,
-          dataset : dataset
-        }
-      });
-      lineChart.render();
+  div.ct-chart
+  script.
+    new Chartist.Line('.ct-chart', {
+      labels: [dates],
+      series: [index_sell,index_buy]
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
