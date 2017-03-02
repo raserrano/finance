@@ -13,6 +13,17 @@ $(function(){
     });
     function requestAsync(query,action){
         console.log(query.serialize());
+        // var chartData;
+        // $(function(){
+        //   $.AJAX({
+        //     url: 'http://localhost:3300/fuelPrices',
+        //     type: 'GET',
+        //     success : function(data) {
+        //       chartData = data;
+        //       console.log(data);
+        //     }
+        //   });
+        // });
         $.ajax({
             type: 'POST',
             data: query.serialize(),
