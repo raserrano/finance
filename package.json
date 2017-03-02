@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/raserrano/finance#readme",
   "devDependencies": {
-    "cheerio": "^0.22.0",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0"
   },
@@ -38,10 +37,12 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "^4.14.0",
+    "fusioncharts": "^3.11.3-sr.1",
     "method-override": "^2.3.7",
     "mongoose": "^4.7.7",
     "morgan": "~1.7.0",
     "pug": "^2.0.0-beta11",
+    "request": "^2.79.0",
     "serve-favicon": "~2.3.0"
   }
 }
