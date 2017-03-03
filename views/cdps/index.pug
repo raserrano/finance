@@ -38,9 +38,11 @@ block content
     div.add_cdp
       form(id='add_cdp', name='add_cdp', method='post', action='/cdps/add')
         div.input
-            span.label Amount
-            input(type='text',id='amount', name='amount')
+          label(for="amount" class="sr-only") Monto
+          input(type="email" id="amounnt" class="form-control" placeholder="Monto" required="" autofocus="")
         div.input
+          label(for="amount" class="sr-only") Monto
+          input(type="email" id="amounnt" class="form-control" placeholder="Monto" required="" autofocus="")
             span.label Days
             input(type='text', name='days')
         div.input

@@ -2,26 +2,43 @@ extends ../layout
 
 block content
   h2 #{title}
-
-  div.table-responsive
-    table.table.table-striped
-      thead
-        tr
-          th Metal
-          th Type
-          th Price
-          th Value
-          th Creation date
-      tbody
-        each metal, i in metals
-          tr
-            td
-              input(type='readonly',value=metal.metal)
-            td
-              input(type='readonly',value=metal.type)
-            td
-              input(type='readonly',value=metal.price)
-            td
-              input(type='readonly',value=metal.value)
-            td
-              input(type='readonly',value=metal.created_at)
+  script.
+    var index_gold = [];
+    var index_silver = [];
+    var index_aluminum = [];
+    var index_copper = [];
+    var dates = [];
+  each obj, i in metals
+    script.
+      var label = "#{obj.created_at.getMonth()}/#{obj.created_at.getDay()}";
+      dates.unshift(label);
+      var type = "#{obj.metal}";
+      switch(type){
+        case "copper":{
+          index_copper.unshift("#{obj.price}");
+          break;
+        }
+        case "gold":{
+          index_gold.unshift("#{obj.price}");
+          break;
+        }
+        case "silver":{
+          index_silver.unshift("#{obj.price}");
+          break;
+        }
+        case"aluminum":{
+        index_aluminum.unshift("#{obj.price}");
+          break;
+        }
+      }
+  div.ct-chart-metals
+  script.
+    new Chartist.Line('.ct-chart-metals', {
+      labels: [dates],
+      series: [index_gold,index_silver,index_aluminum,index_copper]
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
