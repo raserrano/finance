@@ -16,11 +16,10 @@ block content
     tbody
       each currency, i in currencies
         script.
-          date = "#{currency.created_at}";
           var label = "#{currency.created_at.getMonth()}/#{currency.created_at.getDay()}";
-          dates.push(label);
-          index_sell.push("#{currency.sell}");
-          index_buy.push("#{currency.buy}");
+          dates.unshift(label);
+          index_sell.unshift("#{currency.sell}");
+          index_buy.unshift("#{currency.buy}");
         tr
           td
             input(type='readonly',value=currency.sell)
