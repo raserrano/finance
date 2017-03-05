@@ -14,7 +14,7 @@ router.use(methodOverride(function(req, res) {
 }));
 
 router.route('/').get(function(req, res, next) {
-  mongoose.model('Currency').find({}).sort({created_at: -1}).limit(30).exec(
+  mongoose.model('Currency').find({}).sort({created_at: -1}).limit(10).exec(
     function(err, currencies) {
       if (err) {
         return console.error(err);
