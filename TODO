@@ -2,3 +2,8 @@ TODO
 - Adjust metals for same unit
 - Adjust metals price to be USD regarding cents
 - Add charts
+- Add investments and loans
+- Add gasoline prices
+- Add coins managament
+- Add authentication and session handling
+- Improve AJAX calls and HTML generation
