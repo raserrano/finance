@@ -27,9 +27,6 @@ router.route('/').get(function(req, res, next) {
               interests: interests,
             });
           },
-          json: function() {
-            res.json(interests);
-          },
         });
       }
     }
@@ -37,17 +34,13 @@ router.route('/').get(function(req, res, next) {
 });
 
 router.route('/add').post(function(req, res) {
-  mongoose.model('Interest').create(req.body,function(err, Interest) {
+  mongoose.model('Interest').create(req.body,function(err, interest) {
     if (err) {
       res.send(err);
     } else {
       res.format({
-        html: function() {
-          res.location('interests');
-          res.redirect('/interests');
-        },
         json: function() {
-          res.json(Interest);
+          res.json(interest);
         },
       });
     }
@@ -55,23 +48,17 @@ router.route('/add').post(function(req, res) {
 });
 
 router.route('/delete').post(function(req, res) {
-  mongoose.model('Interest').findById(req.body.id, function(err, Interest) {
+  mongoose.model('Interest').findById(req.body.id, function(err, interest) {
     if (err) {
       return console.error(err);
     } else {
-      Interest.remove(function(err, interest) {
+      interest.remove(function(err, interest) {
         if (err) {
           return console.error(err);
         } else {
           res.format({
-            html: function() {
-              res.redirect('/interests');
-            },
             json: function() {
-              res.json({
-                message: 'deleted',
-                item: Interest,
-              });
+              res.json(interest);
             },
           });
         }
@@ -85,7 +72,7 @@ router.route('/edit').post(function(req, res) {
     if (err) {
       console.log('GET Error: There was a problem retrieving: ' + err);
     } else {
-      mongoose.model('Interest').update(req.body, function(err, interestID) {
+      interest.update(req.body, function(err, interestID) {
         if (err) {
           res.send(
             'There was a problem updating the information to the database: ' +
@@ -93,9 +80,6 @@ router.route('/edit').post(function(req, res) {
             );
         } else {
           res.format({
-            html: function() {
-              res.redirect('/interests/');
-            },
             json: function() {
               res.json(interest);
             },

@@ -26,9 +26,6 @@ router.route('/').get(function(req, res, next) {
             cdps: cdps,
           });
         },
-        json: function() {
-          res.json(cdps);
-        },
       });
     }
   });
@@ -40,10 +37,6 @@ router.route('/add').post(function(req, res) {
       res.send(err);
     } else {
       res.format({
-        html: function() {
-          res.location('cdps');
-          res.redirect('/cdps');
-        },
         json: function() {
           res.json(Cdp);
         },
@@ -58,19 +51,13 @@ router.route('/delete').post(function(req, res) {
     if (err) {
       return console.error(err);
     } else {
-      mongoose.model('Cdp').remove(function(err, cdp) {
+      cdp.remove(function(err, cdp) {
         if (err) {
           return console.error(err);
         } else {
           res.format({
-            html: function() {
-              res.redirect('/cdps');
-            },
             json: function() {
-              res.json({
-                message: 'deleted',
-                item: cdp,
-              });
+              res.json(cdp);
             },
           });
         }
@@ -84,7 +71,7 @@ router.route('/edit').post(function(req, res) {
     if (err) {
       console.log('GET Error: There was a problem retrieving: ' + err);
     } else {
-      mongoose.model('Cdp').update(req.body, function(err, cdpID) {
+      cdp.update(req.body, function(err, cdpID) {
         if (err) {
           res.send(
             'There was a problem updating the information to the database: ' +
@@ -92,9 +79,6 @@ router.route('/edit').post(function(req, res) {
           );
         } else {
           res.format({
-            html: function() {
-              res.redirect('/cdps/');
-            },
             json: function() {
               res.json(cdp);
             },
