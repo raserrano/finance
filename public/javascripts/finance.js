@@ -1,33 +1,33 @@
 $(function(){
     $('.addCDP').on('click',function(event){
         event.preventDefault();
-        requestAsync($(this).closest('form'),'add');
+        requestAsync($(this).closest('form'),'/cpds/add');
     });
     $('.deleteCDP').on('click',function(event){
         event.preventDefault();
-        requestAsync($(this).closest('form'),'delete');
+        requestAsync($(this).closest('form'),'/cpds/delete');
     });
     $('.editCDP').on('click',function(event){
         event.preventDefault();
-        requestAsync($(this).closest('form'),'edit');
+        requestAsync($(this).closest('form'),'/cpds/edit');
+    });
+    $('.addInterest').on('click',function(event){
+        event.preventDefault();
+        requestAsync($(this).closest('form'),'/interests/add');
+    });
+    $('.deleteInterest').on('click',function(event){
+        event.preventDefault();
+        requestAsync($(this).closest('form'),'/interests/delete');
+    });
+    $('.editInterest').on('click',function(event){
+        event.preventDefault();
+        requestAsync($(this).closest('form'),'/interests/edit');
     });
     function requestAsync(query,action){
-        console.log(query.serialize());
-        // var chartData;
-        // $(function(){
-        //   $.AJAX({
-        //     url: 'http://localhost:3300/fuelPrices',
-        //     type: 'GET',
-        //     success : function(data) {
-        //       chartData = data;
-        //       console.log(data);
-        //     }
-        //   });
-        // });
         $.ajax({
             type: 'POST',
             data: query.serialize(),
-            url: '/cdps/'+action,            
+            url: action,
             success: function(data) {
                 console.log('Funciono');
             }

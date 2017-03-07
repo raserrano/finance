@@ -80,7 +80,6 @@ function callback(err, response, body) {
   saveCurrency(body);
 }
 var year = 2016;
-var end = 12;
 for (var i = 366; i > 0; i--) {
   config.webservice.url = getURL(year,i);
   request.get(config.webservice,callback);

@@ -34,7 +34,7 @@ block content
   div.ct-chart-metals
   script.
     new Chartist.Line('.ct-chart-metals', {
-      labels: [dates],
+      labels: dates,
       series: [index_gold,index_silver,index_aluminum,index_copper]
     }, {
       fullWidth: true,

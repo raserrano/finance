@@ -6,37 +6,29 @@ block content
     var index_sell = [];
     var index_buy = [];
     var dates = [];
-  div.table-responsive
-  table.table.table-striped
-    thead
-      tr
-        th Sell
-        th Buy
-        th Date
-    tbody
-      each currency, i in currencies
-        script.
-          var label = "#{currency.created_at.getMonth()}/#{currency.created_at.getDay()}";
-          dates.unshift(label);
-          index_sell.unshift("#{currency.sell}");
-          index_buy.unshift("#{currency.buy}");
-        tr
-          td
-            input(type='readonly',value=currency.sell)
-          td
-            input(type='readonly',value=currency.buy)
-          td
-            input(type='readonly',value=currency.created_at)
-          td
-            input(type='readonly',value=currency._id)
+  div.current-currency
+  each currency, i in currencies
+    if i == 0
+      div.input
+        label(for="sell" class="sr-only") Venta
+        input(type="text" id="sell" class="form-control" value=currency.sell readonly=true)
+      div.input
+        label(for="buy" class="sr-only") Compra
+        input(type="text" id="buy" class="form-control" value=currency.buy readonly=true)
+    script.
+      var label = "#{currency.created_at.getMonth()}/#{currency.created_at.getDay()}";
+      dates.unshift(label);
+      index_sell.unshift("#{currency.sell}");
+      index_buy.unshift("#{currency.buy}");
   div.ct-chart
   script.
     new Chartist.Line('.ct-chart', {
-      labels: [dates],
+      labels: dates,
       series: [index_sell,index_buy]
     }, {
       fullWidth: true,
       chartPadding: {
         right: 40
-      }
+      },
+      height: '500px'
     });
