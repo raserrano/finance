@@ -28,9 +28,6 @@ router.route('/')
                 metals: metals,
               });
             },
-            json: function() {
-              res.json(metals);
-            },
           });
         }
       }

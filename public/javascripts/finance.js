@@ -29,7 +29,7 @@ $(function(){
             data: query.serialize(),
             url: action,
             success: function(data) {
-                console.log('Funciono');
+                console.log(data);
             }
         });
     }
