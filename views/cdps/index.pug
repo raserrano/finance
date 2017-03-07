@@ -2,7 +2,18 @@ extends ../layout
 
 block content
   h2 #{title}
-
+  div.add_cdp
+    form(id='add_cdp', name='add_cdp')
+      div.input
+        input(type="text" id="amount" name="amount" class="form-control" placeholder="Amount" required="" autofocus="")
+      div.input
+        input(type="text" id="days" name ="days" class="form-control" placeholder="Days" required="" autofocus="")
+      div.input
+        input(type="text" id="interest" name="interest" class="form-control" placeholder="Interest" required="" autofocus="")
+      div.input
+        input(type="text" id="active" name="active" class="form-control" placeholder="Active" required="" autofocus="")
+      div.actions
+        a(href='#',class='addCDP') Add CDP
   div.table-responsive
     table.table.table-striped
       thead
@@ -15,42 +26,22 @@ block content
           th Finish date
           th Actions
       tbody
-        tr
           each cdp, i in cdps
-            form(id='update', name='update', method='post', action='/cdps/delete')
-              td
-                input(type='hidden',name='id',value=cdp._id)
-                input(type='text',name='amount',value=cdp.amount)
-              td
-                input(type='text',name='days',value=cdp.days)
-              td
-                input(type='text',name='interest',value=cdp.interest)
-              td
-                input(type='text',name='active',value=cdp.active)
-              td
-                input(type='text',name='created_at',value=cdp.created_at)
-              td
-                input(type='text',name='finish_at',value=cdp.finish_at)
-              td
-                a(href='/',class='editCDP') Edit
-                a(href='/',class='deleteCDP') Delete
-                input(type='submit',value='Delete')
-    div.add_cdp
-      form(id='add_cdp', name='add_cdp', method='post', action='/cdps/add')
-        div.input
-          label(for="amount" class="sr-only") Monto
-          input(type="email" id="amount" class="form-control" placeholder="Monto" required="" autofocus="")
-        div.input
-          label(for="amount" class="sr-only") Monto
-          input(type="email" id="amounnt" class="form-control" placeholder="Monto" required="" autofocus="")
-            span.label Days
-            input(type='text', name='days')
-        div.input
-            span.label Interest
-            input(type='text', name='interest')
-        div.input
-            span.label Active
-            input(type='text', name='active')
-        div.actions
-          a(href='/',class='addCDP') Add CDP
-          input(type='submit',value='Add')
+            tr
+              form(id='update', name='update')
+                td
+                  input(type='hidden', name='id',value=cdp._id)
+                  input(type='text', name='amount',value=cdp.amount)
+                td
+                  input(type='text', name='days',value=cdp.days)
+                td
+                  input(type='text', name='interest',value=cdp.interest)
+                td
+                  input(type='text', name='active',value=cdp.active)
+                td
+                  input(type='text', name='created_at',value=cdp.created_at)
+                td
+                  input(type='text', name='finish_at',value=cdp.finish_at)
+                td
+                  a(href='#',class='editCDP') Edit
+                  a(href='#',class='deleteCDP') Delete

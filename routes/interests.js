@@ -37,7 +37,7 @@ router.route('/').get(function(req, res, next) {
 });
 
 router.route('/add').post(function(req, res) {
-  mongoose.model('Interest').create(req.body,function(err,Interest) {
+  mongoose.model('Interest').create(req.body,function(err, Interest) {
     if (err) {
       res.send(err);
     } else {
@@ -55,11 +55,11 @@ router.route('/add').post(function(req, res) {
 });
 
 router.route('/delete').post(function(req, res) {
-  mongoose.model('Interest').findById(req.body.id, function(err, interest) {
+  mongoose.model('Interest').findById(req.body.id, function(err, Interest) {
     if (err) {
       return console.error(err);
     } else {
-      interest.remove(function(err, interest) {
+      Interest.remove(function(err, interest) {
         if (err) {
           return console.error(err);
         } else {
@@ -70,7 +70,7 @@ router.route('/delete').post(function(req, res) {
             json: function() {
               res.json({
                 message: 'deleted',
-                item: interest,
+                item: Interest,
               });
             },
           });
@@ -85,7 +85,7 @@ router.route('/edit').post(function(req, res) {
     if (err) {
       console.log('GET Error: There was a problem retrieving: ' + err);
     } else {
-      interest.update(req.body, function(err, interestID) {
+      mongoose.model('Interest').update(req.body, function(err, interestID) {
         if (err) {
           res.send(
             'There was a problem updating the information to the database: ' +

@@ -54,10 +54,11 @@ router.route('/add').post(function(req, res) {
 
 router.route('/delete').post(function(req, res) {
   mongoose.model('Cdp').findById(req.body.id, function(err, cdp) {
+    console.log(req.body);
     if (err) {
       return console.error(err);
     } else {
-      cdp.remove(function(err, cdp) {
+      mongoose.model('Cdp').remove(function(err, cdp) {
         if (err) {
           return console.error(err);
         } else {
@@ -83,7 +84,7 @@ router.route('/edit').post(function(req, res) {
     if (err) {
       console.log('GET Error: There was a problem retrieving: ' + err);
     } else {
-      cdp.update(req.body, function(err, cdpID) {
+      mongoose.model('Cdp').update(req.body, function(err, cdpID) {
         if (err) {
           res.send(
             'There was a problem updating the information to the database: ' +

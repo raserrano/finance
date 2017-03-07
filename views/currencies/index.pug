@@ -23,7 +23,7 @@ block content
   div.ct-chart
   script.
     new Chartist.Line('.ct-chart', {
-      labels: [dates],
+      labels: dates,
       series: [index_sell,index_buy]
     }, {
       fullWidth: true,

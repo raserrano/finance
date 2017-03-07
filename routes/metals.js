@@ -16,7 +16,7 @@ router.use(methodOverride(function(req, res) {
 
 router.route('/')
   .get(function(req, res, next) {
-    mongoose.model('Metal').find({}).sort({created_at: -1}).exec(
+    mongoose.model('Metal').find({}).sort({created_at: -1}).limit(30).exec(
       function(err, metals) {
         if (err) {
           return console.error(err);
