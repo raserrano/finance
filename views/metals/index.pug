@@ -42,3 +42,47 @@ block content
         right: 40
       }
     });
+  div.ct-chart-gold
+  script.
+    new Chartist.Line('.ct-chart-gold', {
+      labels: dates,
+      series: [index_gold]
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
+  div.ct-chart-silver
+  script.
+    new Chartist.Line('.ct-chart-silver', {
+      labels: dates,
+      series: [index_silver]
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
+  div.ct-chart-aluminum
+  script.
+    new Chartist.Line('.ct-chart-aluminum', {
+      labels: dates,
+      series: [index_aluminum]
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
+  div.ct-chart-copper
+  script.
+    new Chartist.Line('.ct-chart-copper', {
+      labels: dates,
+      series: [index_copper]
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
