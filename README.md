@@ -21,3 +21,8 @@ nodemon ./bin/wwww
 - [X] Metals.
 - [] About Page and contact page.
 - [] Users and Session
+
+
+Queries
+db.metals.find({metal:'silver'}).snapshot().forEach(function (e) {e.price = e.price/100;db.metals.save(e);})
+db.metals.find({metal:'silver'}).snapshot().forEach(function (e) {e.price = e.price/32150.7;db.metals.save(e);})
