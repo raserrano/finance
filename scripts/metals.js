@@ -11,7 +11,12 @@ function saveMetal(body) {
     type: 'Troy Ounce',
     metal: $('#hidCommodity').attr('value').trim().replace(),
   };
-
+  if(metal.metal == 'silver'){
+    metal.price=(metal.price/100);
+  }
+  if(metal.metal == 'aluminum' || metal.metal == 'copper'){
+    metal.price=(metal.price/32150.7);
+  }
   db.model('Metal').create(metal,function(err) {
     if (err) {
       throw err;
