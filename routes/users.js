@@ -6,7 +6,7 @@ methodOverride = require('method-override'); // Used to manipulate POST
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('users/index',{title:'Welcome'})
+  res.render('users/index',{title:'Welcome'});
 });
 
 router.route('/login').post(function(req, res) {
