@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h2 #{title}
+  div.login
+  form(id='login', name='login')
+    div.input
+      input(type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="")
+    div.input
+      input(type="password" id="password" name ="password" class="form-control" placeholder="Password" required="" autofocus="")
+    div.actions
+      a(href='#',class='loginBtn') Login

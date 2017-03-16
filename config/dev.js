@@ -36,5 +36,7 @@ module.exports = {
     silver: 'http://www.indexmundi.com/commodities/?commodity=silver',
     aluminum: 'http://www.indexmundi.com/commodities/?commodity=aluminum',
     copper: 'http://www.indexmundi.com/commodities/?commodity=copper',
+    diesel: 'http://www.indexmundi.com/commodities/?commodity=diesel',
+    gasoline: 'http://www.indexmundi.com/commodities/?commodity=gasoline',
   },
 };

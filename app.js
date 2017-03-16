@@ -15,6 +15,7 @@ var currencies = require('./routes/currencies');
 var cdps = require('./routes/cdps');
 var interests = require('./routes/interests');
 var metals = require('./routes/metals');
+var users = require('./routes/users');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/currencies', currencies);
 app.use('/cdps', cdps);
 app.use('/interests', interests);
 app.use('/metals', metals);
+app.use('/users', users);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
