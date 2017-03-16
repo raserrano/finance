@@ -3,10 +3,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-  username: { type: Number, required: true},
-  password: { type: Number, required: true},
-  email: { type: Number, required: true},
-  active: { type: Boolean ,required: true},
+  username: { type: String, required: true},
+  password: { type: String, required: true},
+  email: { type: String, required: true},
+  active: { type: Number ,required: true},
   last_login:Date,
   assets: {
     materials:{},
@@ -14,7 +14,7 @@ var userSchema = new Schema({
     cdps:{},
     stocks:{},
     real_state:{},
-  }
+  },
   created_at: Date,
   updated_at: Date,
   finish_at: Date,
@@ -33,4 +33,4 @@ userSchema.pre('save', function(next) {
   console.log('User created!');
 });
 
-module.exports = mongoose.model('User', cdpSchema);
+module.exports = mongoose.model('User', userSchema);
