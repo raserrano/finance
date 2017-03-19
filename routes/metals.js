@@ -19,7 +19,9 @@ router.route('/').get(function(req, res, next) {
   if(req.query.period){
     limit = req.query.period;
   }
-  mongoose.model('Metal').find({}).sort({created_at: -1}).limit(limit).exec(
+  var cutoff = new Date();
+  cutoff.setDate(cutoff.getDate()-limit);
+  mongoose.model('Metal').find({created_at:{$gt:cutoff}}).sort({created_at: -1}).exec(
     function(err, metals) {
       if (err) {
         return console.error(err);
