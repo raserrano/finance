@@ -12,8 +12,6 @@ block content
     var dates = [];
   each obj, i in metals
     script.
-      var label = "#{obj.created_at.getMonth()}/#{obj.created_at.getDay()}";
-      dates.unshift(label);
       var type = "#{obj.metal}";
       switch(type){
         case "copper":{
@@ -21,6 +19,8 @@ block content
           break;
         }
         case "gold":{
+          var label = "#{obj.created_at.getMonth()+1}/#{obj.created_at.getDate()}";
+          dates.unshift(label);
           index_gold.unshift("#{obj.price}");
           break;
         }
