@@ -27,6 +27,10 @@ $(function(){
         event.preventDefault();
         requestAsync($(this).closest('form'),'/users/login');
     });
+    $('#loanCalculate').on('click',function(event){
+        event.preventDefault();
+        requestAsync($(this).closest('form'),'/loans/calculate');
+    });
     function requestAsync(query,action){
         $.ajax({
             type: 'POST',
