@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  h1.
+    #{title}
+  div.add_loan
+    form(id='add_loan', name='add_loan')
+      div.input
+        input(type="text" id="amount" name="amount" class="form-control" placeholder="Amount" required="" autofocus="")
+      div.input
+        input(type="text" id="period" name="period" class="form-control" placeholder="Period" required="" autofocus="")
+      div.input
+        input(type="text" id="rate" name="rate" class="form-control" placeholder="Rate" required="" autofocus="")
+      div.input
+        input(type="text" id="payment" name="payment" class="form-control" placeholder="Payment" required="" autofocus="")
+      div.actions
+        a(id="loanCalculate") Calculate
+  if data
+    div.result
+      each obj, i in data
+        div.input
+          input(type="text" id="amount1" name="amount" value="#{obj.amount}" class="form-control" placeholder="Amount" required="" autofocus="")
+        div.input
+          input(type="text" id="period1" name="period" value="#{obj.period}" class="form-control" placeholder="Period" required="" autofocus="")
+        div.input
+          input(type="text" id="rate1" name="rate" value="#{obj.interest}"  class="form-control" placeholder="Rate" required="" autofocus="")
+        div.input
+          input(type="text" id="paymen1t" name="payment" value="#{obj.amortization}"  class="form-control" placeholder="Payment" required="" autofocus="")

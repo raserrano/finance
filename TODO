@@ -7,3 +7,4 @@ TODO
 - Add coins managament
 - Add authentication and session handling
 - Improve AJAX calls and HTML generation
+- Loan baseline, current, expected,analysis.

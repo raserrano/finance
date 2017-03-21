@@ -15,7 +15,41 @@ router.use(methodOverride(function(req, res) {
 }));
 
 router.route('/').get(function(req, res, next) {
-  res.render('loans/index', {
-    title: 'Calculate loan',
+  res.format({
+    html: function() {
+      res.render('loans/index', {
+        title: 'Loans',
+      });
+    },
   });
 });
+
+router.route('/calculate').post(function(req,res,nex){
+  var amount = req.body.amount;
+  var period =req.body.period;
+  var rate =req.body.rate;
+  var payment = 506;
+  var data =[];
+  while(period > 0){
+      var interest = ((rate/100)/12)*amount;
+      amortization = payment - interest;
+      amount = amount - amortization;
+      data.unshift({
+          'period':period,
+          'amount': amount,
+          'interest':interest,
+          'amortization':amortization,
+      });
+      period--;
+  }
+  res.format({
+    html: function() {
+      res.render('loans/index', {
+        title: 'Loans',
+        data:data
+      });
+    },
+  });
+});
+
+module.exports = router;

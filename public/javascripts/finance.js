@@ -23,6 +23,10 @@ $(function(){
         event.preventDefault();
         requestAsync($(this).closest('form'),'/interests/edit');
     });
+    $('#loanCalculate').on('click',function(event){
+        event.preventDefault();
+        requestAsync($(this).closest('form'),'/loans/calculate');
+    });
     function requestAsync(query,action){
         $.ajax({
             type: 'POST',
