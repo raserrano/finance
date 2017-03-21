@@ -1,0 +1,19 @@
+div.table-responsive
+  table.table.table-striped
+    thead
+      tr
+        th Period
+        th Amount
+        th Interest
+        th Amortization
+    tbody
+      each obj, i in data
+        tr
+          td
+            input(type="text", value=obj.period)
+          td
+            input(type="text", value=obj.amount)
+          td
+            input(type="text", value=obj.interest)
+          td
+            input(type="text", value=obj.amortization)

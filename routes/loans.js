@@ -34,7 +34,7 @@ router.route('/calculate').post(function(req,res,nex){
       var interest = ((rate/100)/12)*amount;
       amortization = payment - interest;
       amount = amount - amortization;
-      data.unshift({
+      data.push({
           'period':period,
           'amount': amount,
           'interest':interest,
@@ -44,7 +44,7 @@ router.route('/calculate').post(function(req,res,nex){
   }
   res.format({
     html: function() {
-      res.render('loans/index', {
+      res.render('loans/results', {
         title: 'Loans',
         data:data
       });
