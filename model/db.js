@@ -33,5 +33,6 @@ require('../model/currencies');
 require('../model/cdps');
 require('../model/interests');
 require('../model/metals');
+require('../model/users');
 
 module.exports = db;

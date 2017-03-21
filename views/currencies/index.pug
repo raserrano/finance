@@ -16,7 +16,7 @@ block content
         label(for="buy" class="sr-only") Compra
         input(type="text" id="buy" class="form-control" value=currency.buy readonly=true)
     script.
-      var label = "#{currency.created_at.getMonth()}/#{currency.created_at.getDay()}";
+      var label = "#{currency.created_at.getMonth()+1}/#{currency.created_at.getDate()}";
       dates.unshift(label);
       index_sell.unshift("#{currency.sell}");
       index_buy.unshift("#{currency.buy}");

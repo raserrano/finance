@@ -14,24 +14,29 @@ router.use(methodOverride(function(req, res) {
   }
 }));
 
-router.route('/')
-  .get(function(req, res, next) {
-    mongoose.model('Metal').find({}).sort({created_at: -1}).limit(30).exec(
-      function(err, metals) {
-        if (err) {
-          return console.error(err);
-        } else {
-          res.format({
-            html: function() {
-              res.render('metals/index', {
-                title: 'Daily metals price',
-                metals: metals,
-              });
-            },
-          });
-        }
+router.route('/').get(function(req, res, next) {
+  var limit = 30;
+  if(req.query.period){
+    limit = req.query.period;
+  }
+  var cutoff = new Date();
+  cutoff.setDate(cutoff.getDate()-limit);
+  mongoose.model('Metal').find({created_at:{$gt:cutoff}}).sort({created_at: -1}).exec(
+    function(err, metals) {
+      if (err) {
+        return console.error(err);
+      } else {
+        res.format({
+          html: function() {
+            res.render('metals/index', {
+              title: 'Daily metals price',
+              metals: metals,
+            });
+          },
+        });
       }
-    );
-  });
+    }
+  );
+});
 
 module.exports = router;

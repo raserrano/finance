@@ -7,4 +7,9 @@ TODO
 - Add coins managament
 - Add authentication and session handling
 - Improve AJAX calls and HTML generation
+- Add limit for metals
+- Add gasoline and diesel prices price per barrel
+- Start managing the loans
+- Add CDP calculator
+- Add loan down payment analysis.
 - Loan baseline, current, expected,analysis.

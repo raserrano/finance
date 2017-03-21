@@ -7,11 +7,11 @@ block content
     var index_silver = [];
     var index_aluminum = [];
     var index_copper = [];
+    var index_diesel = [];
+    var index_gasoline = [];
     var dates = [];
   each obj, i in metals
     script.
-      var label = "#{obj.created_at.getMonth()}/#{obj.created_at.getDay()}";
-      dates.unshift(label);
       var type = "#{obj.metal}";
       switch(type){
         case "copper":{
@@ -19,6 +19,8 @@ block content
           break;
         }
         case "gold":{
+          var label = "#{obj.created_at.getMonth()+1}/#{obj.created_at.getDate()}";
+          dates.unshift(label);
           index_gold.unshift("#{obj.price}");
           break;
         }
@@ -30,7 +32,16 @@ block content
         index_aluminum.unshift("#{obj.price}");
           break;
         }
+        case"diesel":{
+        index_diesel.unshift("#{obj.price}");
+          break;
+        }
+        case"gasoline":{
+        index_gasoline.unshift("#{obj.price}");
+          break;
+        }
       }
+  h3 Metals
   div.ct-chart-metals
   script.
     new Chartist.Line('.ct-chart-metals', {
@@ -42,6 +53,7 @@ block content
         right: 40
       }
     });
+  h3 Gold
   div.ct-chart-gold
   script.
     new Chartist.Line('.ct-chart-gold', {
@@ -53,6 +65,7 @@ block content
         right: 40
       }
     });
+  h3 Silver
   div.ct-chart-silver
   script.
     new Chartist.Line('.ct-chart-silver', {
@@ -64,6 +77,7 @@ block content
         right: 40
       }
     });
+  h3 Aluminum
   div.ct-chart-aluminum
   script.
     new Chartist.Line('.ct-chart-aluminum', {
@@ -75,11 +89,36 @@ block content
         right: 40
       }
     });
+  h3 Copper
   div.ct-chart-copper
   script.
     new Chartist.Line('.ct-chart-copper', {
       labels: dates,
       series: [index_copper]
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
+  h3 Gasoline
+  div.ct-chart-gasoline
+  script.
+    new Chartist.Line('.ct-chart-gasoline', {
+      labels: dates,
+      series: [index_gasoline]
+    }, {
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
+  h3 Diesel
+  div.ct-chart-diesel
+  script.
+    new Chartist.Line('.ct-chart-diesel', {
+      labels: dates,
+      series: [index_diesel]
     }, {
       fullWidth: true,
       chartPadding: {
