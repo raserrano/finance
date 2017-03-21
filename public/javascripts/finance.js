@@ -29,15 +29,16 @@ $(function(){
     });
     $('#loanCalculate').on('click',function(event){
         event.preventDefault();
-        requestAsync($(this).closest('form'),'/loans/calculate');
+        requestAsync($(this).closest('form'),'/loans/calculate','.result');
     });
-    function requestAsync(query,action){
+    function requestAsync(query,action,target){
         $.ajax({
             type: 'POST',
             data: query.serialize(),
             url: action,
+            dataType: "html",
             success: function(data) {
-                console.log(data);
+                $(target).html(data);
             }
         });
     }
