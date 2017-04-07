@@ -14,7 +14,21 @@ router.route('/login').post(function(req, res) {
     if (err) {
       res.send(err);
     } else {
-      console.log(JSON.stringify(User));
+      res.format({
+        json: function() {
+          res.json(User);
+        },
+      });
+    }
+  });
+});
+
+router.route('/register').post(function(req, res) {
+  mongoose.model('User').create(req.body.username,function(err,User) {
+    if (err) {
+      res.send(err);
+    } else {
+      console.log(User);
       res.format({
         json: function() {
           res.json(User);

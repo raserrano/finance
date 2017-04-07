@@ -27,6 +27,10 @@ $(function(){
         event.preventDefault();
         requestAsync($(this).closest('form'),'/users/login');
     });
+    $('.registerBtn').on('click',function(event){
+        event.preventDefault();
+        requestAsync($(this).closest('form'),'/users/register');
+    });
     $('#loanCalculate').on('click',function(event){
         event.preventDefault();
         requestAsync($(this).closest('form'),'/loans/calculate','.result');

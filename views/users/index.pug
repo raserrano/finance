@@ -2,11 +2,21 @@ extends ../layout
 
 block content
   h2 #{title}
-  div.login
-  form(id='login', name='login')
+  div(class='login', data-toggle="collapse", data-target="#login") Login
+  form(id='login', name='login', class="collapse in")
     div.input
       input(type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="")
     div.input
       input(type="password" id="password" name ="password" class="form-control" placeholder="Password" required="" autofocus="")
     div.actions
       a(href='#',class='loginBtn') Login
+  div(class='register', data-toggle="collapse", data-target="#register") Register
+  form(id='register', name='register', class="collapse")
+    div.input
+      input(type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="")
+    div.input
+      input(type="text" id="email" name="email" class="form-control" placeholder="Email" required="" autofocus="")
+    div.input
+      input(type="password" id="password" name ="password" class="form-control" placeholder="Password" required="" autofocus="")
+    div.actions
+      a(href='#',class='registerBtn') Register

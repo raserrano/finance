@@ -6,7 +6,7 @@ var userSchema = new Schema({
   username: { type: String, required: true},
   password: { type: String, required: true},
   email: { type: String, required: true},
-  active: { type: Number ,required: true},
+  status: { type: Number ,required: true},
   last_login:Date,
   assets: {
     materials:{},
@@ -26,8 +26,9 @@ userSchema.pre('save', function(next) {
   if (!this.created_at) {
     this.created_at = currentDate;
   }
-  if (!this.active) {
-    this.active = true;
+  if (!this.status) {
+    // Status codes to de defined 2 temp to be register not confirmed
+    this.status = 2;
   }
   next();
   console.log('User created!');
