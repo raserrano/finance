@@ -1,7 +1,7 @@
 var config = require('../config/current'),
   mongoose = require('mongoose');
 
-var db = mongoose.connect(config.database.conn(config.database.options));
+var db = mongoose.connect(config.database.conn(config.database.options),{useMongoClient: true});
 
 // CONNECTION EVENTS
 // When successfully connected
