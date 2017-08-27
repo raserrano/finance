@@ -15,29 +15,29 @@ block content
       var type = "#{obj.metal}";
       switch(type){
         case "copper":{
-          index_copper.unshift("#{obj.price}");
+          index_copper.unshift(parseFloat("#{obj.price}"));
           break;
         }
         case "gold":{
-          var label = "#{obj.created_at.getMonth()+1}/#{obj.created_at.getDate()}";
+          var label = new Date("#{obj.created_at}");
           dates.unshift(label);
-          index_gold.unshift("#{obj.price}");
+          index_gold.unshift(parseFloat("#{obj.price}"));
           break;
         }
         case "silver":{
-          index_silver.unshift("#{obj.price}");
+          index_silver.unshift(parseFloat("#{obj.price}"));
           break;
         }
         case"aluminum":{
-        index_aluminum.unshift("#{obj.price}");
+        index_aluminum.unshift(parseFloat("#{obj.price}"));
           break;
         }
         case"diesel":{
-        index_diesel.unshift("#{obj.price}");
+        index_diesel.unshift(parseFloat("#{obj.price}"));
           break;
         }
         case"gasoline":{
-        index_gasoline.unshift("#{obj.price}");
+        index_gasoline.unshift(parseFloat("#{obj.price}"));
           break;
         }
       }
