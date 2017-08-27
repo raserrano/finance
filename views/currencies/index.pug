@@ -16,19 +16,35 @@ block content
         label(for="buy" class="sr-only") Compra
         input(type="text" id="buy" class="form-control" value=currency.buy readonly=true)
     script.
-      var label = "#{currency.created_at.getMonth()+1}/#{currency.created_at.getDate()}";
+      var label = new Date("#{currency.created_at}");
       dates.unshift(label);
-      index_sell.unshift("#{currency.sell}");
-      index_buy.unshift("#{currency.buy}");
-  div.ct-chart
-  script.
-    new Chartist.Line('.ct-chart', {
-      labels: dates,
-      series: [index_sell,index_buy]
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 40
-      },
-      height: '500px'
-    });
+      index_sell.unshift(parseFloat("#{currency.sell}"));
+      index_buy.unshift(parseFloat("#{currency.buy}"));
+  div#chart_div
+    script.
+      google.charts.load('current', {packages: ['corechart', 'line']});
+      google.charts.setOnLoadCallback(drawBasic);
+
+      function drawBasic() {
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('date', 'Date');
+            data.addColumn('number', 'Buy');
+            data.addColumn('number', 'Sell');
+            //- data.addColumn('number', 'sell');
+            var test = dates.map(function(v,i) {return [v, index_buy[i],index_sell[i]];});
+            data.addRows(test);
+
+            var options = {
+              hAxis: {
+                title: 'Date'
+              },
+              vAxis: {
+                title: 'Price'
+              }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+          }

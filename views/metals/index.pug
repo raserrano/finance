@@ -42,86 +42,198 @@ block content
         }
       }
   h3 Metals
-  div.ct-chart-metals
+  div#chart_metals
   script.
-    new Chartist.Line('.ct-chart-metals', {
-      labels: dates,
-      series: [index_gold,index_silver,index_aluminum,index_copper]
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 40
-      }
-    });
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('date', 'Date');
+          data.addColumn('number', 'Price');
+          //- data.addColumn('number', 'sell');
+          var values = dates.map(function(v,i) {return [v,index_gold[i],index_silver[i],index_aluminum[i],index_diesel[i],index_gasoline[i]];});
+          data.addRows(values);
+
+          var options = {
+            hAxis: {
+              title: 'Date'
+            },
+            vAxis: {
+              title: 'Price'
+            }
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('chart_metals'));
+
+          chart.draw(data, options);
+        }
   h3 Gold
-  div.ct-chart-gold
+  div#chart_gold
   script.
-    new Chartist.Line('.ct-chart-gold', {
-      labels: dates,
-      series: [index_gold]
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 40
-      }
-    });
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('date', 'Date');
+          data.addColumn('number', 'Price');
+          //- data.addColumn('number', 'sell');
+          var values = dates.map(function(v,i) {return [v, index_gold[i]];});
+          data.addRows(values);
+
+          var options = {
+            hAxis: {
+              title: 'Date'
+            },
+            vAxis: {
+              title: 'Price Gold'
+            }
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('chart_gold'));
+
+          chart.draw(data, options);
+        }
   h3 Silver
-  div.ct-chart-silver
+  div#chart_silver
   script.
-    new Chartist.Line('.ct-chart-silver', {
-      labels: dates,
-      series: [index_silver]
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 40
-      }
-    });
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('date', 'Date');
+          data.addColumn('number', 'Price');
+          //- data.addColumn('number', 'sell');
+          var values = dates.map(function(v,i) {return [v, index_silver[i]];});
+          data.addRows(values);
+
+          var options = {
+            hAxis: {
+              title: 'Date'
+            },
+            vAxis: {
+              title: 'Price Silver'
+            }
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('chart_silver'));
+
+          chart.draw(data, options);
+        }
   h3 Aluminum
-  div.ct-chart-aluminum
+  div#chart_aluminum
   script.
-    new Chartist.Line('.ct-chart-aluminum', {
-      labels: dates,
-      series: [index_aluminum]
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 40
-      }
-    });
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('date', 'Date');
+          data.addColumn('number', 'Price');
+          //- data.addColumn('number', 'sell');
+          var values = dates.map(function(v,i) {return [v, index_aluminum[i]];});
+          data.addRows(values);
+
+          var options = {
+            hAxis: {
+              title: 'Date'
+            },
+            vAxis: {
+              title: 'Price Aluminum'
+            }
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('chart_aluminum'));
+
+          chart.draw(data, options);
+        }
   h3 Copper
-  div.ct-chart-copper
+  div#chart_copper
   script.
-    new Chartist.Line('.ct-chart-copper', {
-      labels: dates,
-      series: [index_copper]
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 40
-      }
-    });
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('date', 'Date');
+          data.addColumn('number', 'Price');
+          //- data.addColumn('number', 'sell');
+          var values = dates.map(function(v,i) {return [v, index_copper[i]];});
+          data.addRows(values);
+
+          var options = {
+            hAxis: {
+              title: 'Date'
+            },
+            vAxis: {
+              title: 'Price Copper'
+            }
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('chart_copper'));
+
+          chart.draw(data, options);
+        }
   h3 Gasoline
-  div.ct-chart-gasoline
+  div#chart_gasonline
   script.
-    new Chartist.Line('.ct-chart-gasoline', {
-      labels: dates,
-      series: [index_gasoline]
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 40
-      }
-    });
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('date', 'Date');
+          data.addColumn('number', 'Price');
+          //- data.addColumn('number', 'sell');
+          var values = dates.map(function(v,i) {return [v, index_gasoline[i]];});
+          data.addRows(values);
+
+          var options = {
+            hAxis: {
+              title: 'Date'
+            },
+            vAxis: {
+              title: 'Price Gasoline'
+            }
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('chart_gasonline'));
+
+          chart.draw(data, options);
+        }
   h3 Diesel
-  div.ct-chart-diesel
+  div#chart_diesel
   script.
-    new Chartist.Line('.ct-chart-diesel', {
-      labels: dates,
-      series: [index_diesel]
-    }, {
-      fullWidth: true,
-      chartPadding: {
-        right: 40
-      }
-    });
+    google.charts.load('current', {packages: ['corechart', 'line']});
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('date', 'Date');
+          data.addColumn('number', 'Price');
+          //- data.addColumn('number', 'sell');
+          var values = dates.map(function(v,i) {return [v, index_diesel[i]];});
+          data.addRows(values);
+
+          var options = {
+            hAxis: {
+              title: 'Date'
+            },
+            vAxis: {
+              title: 'Price Diesel'
+            }
+          };
+
+          var chart = new google.visualization.LineChart(document.getElementById('chart_diesel'));
+
+          chart.draw(data, options);
+        }
