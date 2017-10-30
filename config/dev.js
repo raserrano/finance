@@ -13,13 +13,18 @@ module.exports = {
     },
     conn: function(database) {
       var uri = '';
-      if (!database.auth) {
-        uri = 'mongodb://' + database.host + ':' +
-          database.port + '/' + database.database;
-      } else {
-        uri = 'mongodb://' + database.username + ':' +
-          database.password + '@' + database.host + ':' +
-          database.port + '/' + database.database;
+      if ((process.env.MONGODB_URI !== undefined)
+        && (process.env.MONGODB_URI !== null)) {
+        uri = process.env.MONGODB_URI;
+      }else {
+        if (!database.auth) {
+          uri = 'mongodb://' + database.host + ':' +
+            database.port + '/' + database.database;
+        } else {
+          uri = 'mongodb://' + database.username + ':' +
+            database.password + '@' + database.host + ':' +
+            database.port + '/' + database.database;
+        }
       }
       return uri.toString();
     },
