@@ -44,4 +44,7 @@ module.exports = {
     diesel: 'http://www.indexmundi.com/commodities/?commodity=diesel',
     gasoline: 'http://www.indexmundi.com/commodities/?commodity=gasoline',
   },
+  crypto:{
+    url: 'https://bittrex.com/api/v1.1/public/getmarketsummaries',
+  }
 };

@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+  h2 #{title}
+  div.add_crypto
+    form(id='add_crypto', name='add_crypto')
+      div.input
+        select(type="text" id="name" class="form-control" placeholder="Name" required="" autofocus="")
+          each market in markets
+            option(value=market.name) #{market.name}
+      div.input
+        input(type="text" id="amount" name="amount" class="form-control" placeholder="Amount" required="" autofocus="")
+      div.input
+        input(type="text" id="price" name ="price" class="form-control" placeholder="Price" required="" autofocus="")
+      div.actions
+        a(href='#',class='addCDP') Add CDP
+  div.table-responsive
+    table.table.table-striped
+      thead
+        tr
+          th Name
+          th Amount
+          th Price
+          th Actions
+      tbody
+          each crypto, i in cryptos
+            tr
+              form(id='update', name='update')
+                td
+                  input(type='text', name='name',value=crypto.name)
+                td
+                  input(type='text', name='amount',value=crypto.amount)
+                td
+                  input(type='text', name='price',value=crypto.price)
+                td
+                  a(href='#',class='editCrypto') Edit
+                  a(href='#',class='deleteCrypto') Delete

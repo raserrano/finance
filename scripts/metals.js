@@ -26,13 +26,8 @@ function saveMetal(body) {
   db.model('Metal').create(metal,function(err) {
     if (err) {
       throw err;
-    } else {
-      closeDB();
     }
   });
-}
-function closeDB() {
-  db.connection.close();
 }
 
 function callback(err, response, body) {
@@ -53,3 +48,4 @@ config.webservice.url = config.metals.diesel;
 request.get(config.webservice,callback);
 config.webservice.url = config.metals.gasoline;
 request.get(config.webservice,callback);
+//process.exit();

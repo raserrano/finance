@@ -17,6 +17,7 @@ var interests = require('./routes/interests');
 var metals = require('./routes/metals');
 var users = require('./routes/users');
 var loans = require('./routes/loans');
+var cryptos = require('./routes/cryptos');
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/interests', interests);
 app.use('/metals', metals);
 app.use('/users', users);
 app.use('/loans', loans);
+app.use('/cryptos', cryptos);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
