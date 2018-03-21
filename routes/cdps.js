@@ -1,6 +1,6 @@
 var express = require('express'),
 router = express.Router(),
-mongoose = require('mongoose'), // Mongo connection
+Cdp = require('../model/cdps'), // Mongo connection
 bodyParser = require('body-parser'), // Parses information from POST
 methodOverride = require('method-override'); // Used to manipulate POST
 
@@ -15,7 +15,7 @@ router.use(methodOverride(function(req, res) {
 }));
 
 router.route('/').get(function(req, res, next) {
-  mongoose.model('Cdp').find({}, function(err, cdps) {
+  Cdp.find({}, function(err, cdps) {
     if (err) {
       return console.error(err);
     } else {
@@ -32,7 +32,7 @@ router.route('/').get(function(req, res, next) {
 });
 
 router.route('/add').post(function(req, res) {
-  mongoose.model('Cdp').create(req.body,function(err,Cdp) {
+  Cdp.create(req.body,function(err,Cdp) {
     if (err) {
       res.send(err);
     } else {
@@ -46,7 +46,7 @@ router.route('/add').post(function(req, res) {
 });
 
 router.route('/delete').post(function(req, res) {
-  mongoose.model('Cdp').findById(req.body.id, function(err, cdp) {
+  Cdp.findById(req.body.id, function(err, cdp) {
     console.log(req.body);
     if (err) {
       return console.error(err);
@@ -67,7 +67,7 @@ router.route('/delete').post(function(req, res) {
 });
 
 router.route('/edit').post(function(req, res) {
-  mongoose.model('Cdp').findById(req.body.id, function(err, cdp) {
+  Cdp.findById(req.body.id, function(err, cdp) {
     if (err) {
       console.log('GET Error: There was a problem retrieving: ' + err);
     } else {

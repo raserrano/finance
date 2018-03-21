@@ -1,6 +1,6 @@
 var express = require('express'),
 router = express.Router(),
-mongoose = require('mongoose'), // Mongo connection
+User = require('../model/users'), // Mongo connection
 bodyParser = require('body-parser'), // Parses information from POST
 methodOverride = require('method-override'); // Used to manipulate POST
 
@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.route('/login').post(function(req, res) {
-  mongoose.model('User').find({username:req.body.username},function(err,User) {
+  User.find({username:req.body.username},function(err,User) {
     if (err) {
       res.send(err);
     } else {

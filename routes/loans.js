@@ -1,6 +1,5 @@
 var express = require('express'),
     router = express.Router(),
-    mongoose = require('mongoose'), // Mongo connection
     bodyParser = require('body-parser'), // Parses information from POST
     methodOverride = require('method-override'); // Used to manipulate POST
 

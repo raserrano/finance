@@ -33,7 +33,11 @@ $(function(){
     });
     $('.addCrypto').on('click',function(event){
         event.preventDefault();
-        requestAsync($(this).closest('form'),'/cpds/add');
+        requestAsync($(this).closest('form'),'/cryptos/add');
+    });
+    $('.deleteCrypto').on('click',function(event){
+        event.preventDefault();
+        requestAsync($(this).closest('form'),'/cryptos/delete');
     });
     function requestAsync(query,action,target){
         $.ajax({

@@ -1,6 +1,6 @@
 var express = require('express'),
     router = express.Router(),
-    mongoose = require('mongoose'), // Mongo connection
+    Metal = require('../model/metals'), // Mongo connection
     bodyParser = require('body-parser'), // Parses information from POST
     methodOverride = require('method-override'); // Used to manipulate POST
 
@@ -21,7 +21,7 @@ router.route('/').get(function(req, res, next) {
   }
   var cutoff = new Date();
   cutoff.setDate(cutoff.getDate()-limit);
-  mongoose.model('Metal').find({created_at:{$gt:cutoff}}).sort({created_at: -1}).exec(
+  Metal.find({created_at:{$gt:cutoff}}).sort({created_at: -1}).exec(
     function(err, metals) {
       if (err) {
         return console.error(err);

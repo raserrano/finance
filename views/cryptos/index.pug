@@ -5,7 +5,7 @@ block content
   div.add_crypto
     form(id='add_crypto', name='add_crypto')
       div.input
-        select(type="text" id="name" class="form-control" placeholder="Name" required="" autofocus="")
+        select(type="text" id="name" name="name" class="form-control" placeholder="Name" required="" autofocus="")
           each market in markets
             option(value=market.name) #{market.name}
       div.input
@@ -13,7 +13,7 @@ block content
       div.input
         input(type="text" id="price" name ="price" class="form-control" placeholder="Price" required="" autofocus="")
       div.actions
-        a(href='#',class='addCDP') Add CDP
+        a(href='#',class='addCrypto') Add Crypto
   div.table-responsive
     table.table.table-striped
       thead
@@ -33,5 +33,4 @@ block content
                 td
                   input(type='text', name='price',value=crypto.price)
                 td
-                  a(href='#',class='editCrypto') Edit
                   a(href='#',class='deleteCrypto') Delete

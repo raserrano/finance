@@ -1,31 +1,35 @@
 const
   wait = require('wait.for'),
   conf = require('../config/current'),
+  Metal = require('./metals'),
+  Market = require('./markets'),
+  Crypto = require('./cryptos'),
+  Currency = require('./currencies'),
   db = require('./db');
 
 module.exports = {
   upsertMarket: function(query,doc,callback) {
-    db.model('Market').update(
+    Market.update(
       query,doc,{upsert: true,new: true},
       function(err,data) {callback(err,data);}
     );
   },
   getMarkets: function(callback) {
-    db.model('Market').find({}).exec(
+    Market.find({}).exec(
       function(err,data) {
         callback(err,data);
       }
     );
   },
   getCryptos: function(callback) {
-    db.model('Crypto').find({}).exec(
+    Crypto.find({}).exec(
       function(err,data) {
         callback(err,data);
       }
     );
   },
   upsertCurrency: function(doc,callback) {
-    db.model('Currency').update(
+    Currency.update(
       {created_at: doc.created_at},doc,{upsert: true,new: true},
       function(err,data) {callback(err,data);}
     );
