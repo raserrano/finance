@@ -22,7 +22,6 @@ cdpSchema.pre('save', function(next) {
     this.active = true;
   }
   next();
-  console.log('CDP created!');
 });
 
 module.exports = mongoose.model('Cdp', cdpSchema);

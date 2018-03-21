@@ -46,5 +46,39 @@ module.exports = {
   },
   crypto:{
     url: 'https://bittrex.com/api/v1.1/public/getmarketsummaries',
+  },
+  env: {
+    DEBUG: function() {
+      var value = false;
+      if ((process.env.DEBUG !== undefined) &&
+        (process.env.DEBUG !== null)) {
+        value = JSON.parse(process.env.DEBUG);
+      }
+      return value;
+    },
+    ACCOUNT_NAME: function() {
+      var value = '';
+      if ((process.env.ACCOUNT_NAME !== undefined) &&
+        (process.env.ACCOUNT_NAME !== null)) {
+        value = process.env.ACCOUNT_NAME;
+      }
+      return value;
+    },
+    POSTING_KEY_PRV: function() {
+      var value = '';
+      if ((process.env.POSTING_KEY_PRV !== undefined) &&
+        (process.env.POSTING_KEY_PRV !== null)) {
+        value = process.env.POSTING_KEY_PRV;
+      }
+      return value;
+    },
+    YEAR: function() {
+      var value = 2018;
+      if ((process.env.YEAR !== undefined) &&
+        (process.env.YEAR !== null)) {
+        value = parseInt(process.env.YEAR);
+      }
+      return value;
+    },
   }
 };

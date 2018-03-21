@@ -20,7 +20,6 @@ interestSchema.pre('save', function(next) {
     this.active = true;
   }
   next();
-  console.log('Interest created!');
 });
 
 module.exports = mongoose.model('Interest', interestSchema);

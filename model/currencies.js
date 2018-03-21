@@ -5,7 +5,11 @@ var Schema = mongoose.Schema;
 var currencySchema = new Schema({
   buy: { type: Number, required: true},
   sell: { type: Number, required: true},
-  created_at: Date,
+  created_at: { 
+    type: Date, 
+    index: {unique: true,dropDups: true}, 
+    required: true
+  },
   updated_at: Date,
 });
 

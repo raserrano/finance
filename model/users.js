@@ -30,7 +30,6 @@ userSchema.pre('save', function(next) {
     this.active = true;
   }
   next();
-  console.log('User created!');
 });
 
 module.exports = mongoose.model('User', userSchema);

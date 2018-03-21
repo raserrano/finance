@@ -1,26 +1,17 @@
 var request = require('request'),
-    config = require('../config/current'),
-    db = require('../model/db');
+  wait = require('wait.for'),
+  utils = require('../model/utils')
+config = require('../config/current');
 
-function saveCurrency(body) {
-  var data = JSON.parse(body);
+wait.launchFiber(function() {
+  var economy = wait.for(request,config.webservice);
+  var data = JSON.parse(economy.body);
   var currency = {
     buy: data.TipoCambioCompra.replace(/,/g , '.'),
     sell: data.TipoCambioVenta.replace(/,/g , '.'),
+    created_at: new Date(),
   };
-
-  db.model('Currency').create(currency,function(err) {
-    if (err) {
-      throw err;
-    }
-    db.connection.close();
-  });
-}
-
-function callback(err, response, body) {
-  if (err && response.statusCode !== 200) {
-    console.log('Request error.');
-  }
-  saveCurrency(body);
-}
-request.get(config.webservice,callback);
+  var res = wait.for(utils.upsertCurrency,currency)
+  console.log('Finish updating currency');
+  process.exit();
+});

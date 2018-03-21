@@ -31,6 +31,10 @@ $(function(){
         event.preventDefault();
         requestAsync($(this).closest('form'),'/loans/calculate','.result');
     });
+    $('.addCrypto').on('click',function(event){
+        event.preventDefault();
+        requestAsync($(this).closest('form'),'/cpds/add');
+    });
     function requestAsync(query,action,target){
         $.ajax({
             type: 'POST',

@@ -4,6 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser'), // Parses information from POST'
     utils = require('../model/utils'),
     wait = require('wait.for'),
+    db = require('../model/db'),
     methodOverride = require('method-override'); // Used to manipulate POST
 
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -17,28 +18,19 @@ router.use(methodOverride(function(req, res) {
 }));
 
 router.route('/').get(function(req, res, next) {
-  var markets = {};
   wait.launchFiber(function() {
-    markets = wait.for(utils.getMarkets);
-  });
-  console.log(markets);
-  mongoose.model('Crypto').find().sort({amount:-1}).exec(
-    function(err, cryptos) {
-      if (err) {
-        return console.error(err);
-      } else {
-        res.format({
-          html: function() {
-            res.render('cryptos/index', {
-              title: 'Daily cryptos price',
-              cryptos: cryptos,
-              markets: markets,
-            });
-          },
+    var markets = wait.for(utils.getMarkets);
+    var cryptos = wait.for(utils.getCryptos);
+    res.format({
+      html: function() {
+        res.render('cryptos/index', {
+          title: 'Daily cryptos price',
+          cryptos: cryptos,
+          markets: markets,
         });
-      }
-    }
-  );
+      },
+    });
+  });
 });
 
 module.exports = router;

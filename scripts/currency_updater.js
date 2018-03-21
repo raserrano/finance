@@ -1,11 +1,13 @@
 var request = require('request'),
     cheerio = require('cheerio'),
-    config = require('../config/current'),
+    wait = require('wait.for'),
+    utils = require('../model/utils'),
+    conf = require('../config/current'),
     db = require('../model/db');
 
-var date_locator = '#theTable400 > tr:nth-child(2) > td:nth-child(1)';
-var buy_locator = '#theTable400 > tr:nth-child(2) > td:nth-child(2)';
-var sell_locator = '#theTable400 > tr:nth-child(2) > td:nth-child(3)';
+var date_locator = '#theTable400 > tbody > tr:nth-child(2) > td:nth-child(1) > table > tbody > tr > td';
+var buy_locator = '#theTable400 > tbody > tr:nth-child(2) > td:nth-child(2) > table > tbody > tr > td > table > tbody > tr > td';
+var sell_locator = '#theTable400 > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr > td > table > tbody > tr > td';
 
 function getURL(year, counter) {
   var base_url = 'http://indicadoreseconomicos.bccr.fi.cr/' +
@@ -14,7 +16,7 @@ function getURL(year, counter) {
   if (counter != 1) {
     request = base_url +
       '?CodCuadro=400&Idioma=1&FecInicial=' + year +
-      '/01/01&FecFinal='+(year+1)+'/01/01&Filtro=' + counter;
+      '/01/01&FecFinal=' + (year + 1) + '/01/01&Filtro=' + counter;
   } else {
     request = base_url +
       '?CodCuadro=400&Idioma=1&FecInicial=' + year +
@@ -23,65 +25,24 @@ function getURL(year, counter) {
   return request;
 }
 
-function getDate(date) {
-  console.log(date);
-  var parts = date.split(' ');
-  return Date.parse(parts[2] + '-' + getMonth(parts[1]) + '-' + parts[0]);
-}
-
-function getMonth(mon) {
-  // Stupid month naming
-  var months =
-    [
-      'ene',
-      'feb',
-      'mar',
-      'abr',
-      'may',
-      'jun',
-      'jul',
-      'ago',
-      'set',
-      'oct',
-      'nov',
-      'dic',
-    ];
-  var value = null;
-  if (undefined !== mon) {
-    value = months.indexOf(mon.toLowerCase()) + 1;
+wait.launchFiber(function() {
+  var year = conf.env.YEAR();
+  for (var i = 366; i > 0; i--) {
+    conf.webservice.url = getURL(year,i);
+    var res = wait.for(request,conf.webservice)
+    var $ = cheerio.load(res.body);
+    var from = utils.getDate($(date_locator).text().trim());
+    if(from != null && from != ''){
+      from = new Date(from);
+      var currency = {
+        buy: $(buy_locator).text().trim().replace(/,/g , '.'),
+        sell: $(sell_locator).text().trim().replace(/,/g , '.'),
+        created_at: from,
+      };
+      wait.for(utils.upsertCurrency,currency);
+    }
   }
-  return value;
-}
-
-function saveCurrency(body) {
-  var $ = cheerio.load(body);
-
-  var currency = {
-    buy: $(buy_locator).text().trim().replace(/,/g , '.'),
-    sell: $(sell_locator).text().trim().replace(/,/g , '.'),
-    created_at: getDate($(date_locator).text().trim()),
-  };
-  if (currency.created_at !== null && currency.buy && currency.sell) {
-    db.model('Currency').create(currency,function(err) {
-      if (err) {
-        console.log(currency);
-        throw err;
-      }
-    });
-  } else {
-    console.log(currency);
-  }
-}
-
-function callback(err, response, body) {
-  if (err && response.statusCode !== 200) {
-    console.log('Request error.');
-  }
-  saveCurrency(body);
-}
-var year = 2016;
-for (var i = 366; i > 0; i--) {
-  config.webservice.url = getURL(year,i);
-  request.get(config.webservice,callback);
-}
-
+  //  Var res = wait.for(utils.upsertCurrency,currency)
+  console.log('Finish updating currency');
+  process.exit();
+});

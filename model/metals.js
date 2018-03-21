@@ -16,7 +16,6 @@ metalSchema.pre('save', function(next) {
     this.created_at = currentDate;
   }
   next();
-  console.log('Metal created!');
 });
 
 module.exports = mongoose.model('Metal', metalSchema);

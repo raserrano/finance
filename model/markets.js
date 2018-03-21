@@ -21,8 +21,6 @@ marketSchema.pre('save', function(next) {
     this.active = true;
   }
   next();
-  console.log('Market created!');
 });
 
-module.exports = mongoose.model('Market', marketSchema
-);
+module.exports = mongoose.model('Market', marketSchema);
