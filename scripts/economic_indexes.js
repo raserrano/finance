@@ -5,6 +5,7 @@ config = require('../config/current');
 
 wait.launchFiber(function() {
   var economy = wait.for(request,config.webservice);
+  console.log(economy.body);
   var data = JSON.parse(economy.body);
   var currency = {
     buy: data.TipoCambioCompra.replace(/,/g , '.'),

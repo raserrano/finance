@@ -2,7 +2,8 @@ var request = require('request'),
   cheerio = require('cheerio'),
   wait = require('wait.for'),
   config = require('../config/current'),
-  db = require('../model/db');
+  db = require('../model/db'),
+  Metal = require('../model/metals');
 
 function saveMetal(body,type) {
   var $ = cheerio.load(body);
@@ -24,7 +25,7 @@ function saveMetal(body,type) {
   if (metal.metal == 'gasoline' || metal.metal == 'diesel') {
     metal.price = (metal.price * 42);
   }
-  db.model('Metal').create(metal,function(err) {
+  Metal.create(metal,function(err) {
     if (err) {
       throw err;
     }
