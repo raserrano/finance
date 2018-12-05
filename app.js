@@ -30,6 +30,12 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/robots.txt', function(req, res, next) {
+  res.type('text/plain')
+  res.send('User-agent: *\nDisallow: /');
+});
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
