@@ -28,21 +28,21 @@
   },
   "homepage": "https://github.com/raserrano/finance#readme",
   "devDependencies": {
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.7"
+    "mocha": "*",
+    "nodemon": "*"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "cheerio": "^1.0.0-rc.2",
-    "cookie-parser": "~1.4.3",
-    "debug": "^4.1.0",
-    "express": "^4.16.4",
-    "method-override": "^3.0.0",
-    "mongoose": "^5.3.14",
-    "morgan": "^1.9.1",
-    "pug": "^2.0.0-beta11",
-    "request": "^2.88.0",
-    "serve-favicon": "~2.5.0",
-    "wait.for": "^0.6.6"
+    "body-parser": "*",
+    "cheerio": "*",
+    "cookie-parser": "*",
+    "debug": "*",
+    "express": "*",
+    "method-override": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "pug": "*",
+    "request": "*",
+    "serve-favicon": "*",
+    "wait.for": "*"
   }
 }
