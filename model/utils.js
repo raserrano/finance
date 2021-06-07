@@ -1,58 +1,58 @@
 const
-  wait = require('wait.for'),
-  conf = require('../config/current'),
-  Metal = require('./metals'),
-  Market = require('./markets'),
-  Crypto = require('./cryptos'),
-  Currency = require('./currencies'),
-  db = require('./db');
+  wait = require('wait.for')
+const conf = require('../config/current')
+const Metal = require('./metals')
+const Market = require('./markets')
+const Crypto = require('./cryptos')
+const Currency = require('./currencies')
+const db = require('./db')
 
 module.exports = {
-  upsertMarket: function(query,doc,callback) {
+  upsertMarket: function (query, doc, callback) {
     Market.update(
-      query,doc,{upsert: true,new: true},
-      function(err,data) {callback(err,data);}
-    );
+      query, doc, { upsert: true, new: true },
+      function (err, data) { callback(err, data) }
+    )
   },
-  getMarkets: function(callback) {
+  getMarkets: function (callback) {
     Market.find({}).exec(
-      function(err,data) {
-        callback(err,data);
+      function (err, data) {
+        callback(err, data)
       }
-    );
+    )
   },
-  getCryptos: function(callback) {
+  getCryptos: function (callback) {
     Crypto.find({}).exec(
-      function(err,data) {
-        callback(err,data);
+      function (err, data) {
+        callback(err, data)
       }
-    );
+    )
   },
-  upsertCurrency: function(doc,callback) {
+  upsertCurrency: function (doc, callback) {
     Currency.update(
-      {created_at: doc.created_at},doc,{upsert: true,new: true},
-      function(err,data) {callback(err,data);}
-    );
+      { created_at: doc.created_at }, doc, { upsert: true, new: true },
+      function (err, data) { callback(err, data) }
+    )
   },
-  getMonth: function(mon) {
+  getMonth: function (mon) {
     // Stupid month naming
-    var months = [
-      'ene','feb','mar','abr','may','jun','jul','ago','set','oct','nov','dic',
-    ];
-    var value = null;
+    const months = [
+      'ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'set', 'oct', 'nov', 'dic'
+    ]
+    let value = null
     if (undefined !== mon) {
-      value = months.indexOf(mon.toLowerCase()) + 1;
+      value = months.indexOf(mon.toLowerCase()) + 1
     }
-    return value;
+    return value
   },
-  getDate: function(date) {
-    var from = null;
-    if(date != null && date != ''){
-      var parts = date.split(' ');
+  getDate: function (date) {
+    let from = null
+    if (date != null && date != '') {
+      const parts = date.split(' ')
       from = Date.parse(
         parts[2] + '-' + this.getMonth(parts[1]) + '-' + parts[0]
-      );
+      )
     }
-    return from;
-  },
+    return from
+  }
 }

@@ -9,32 +9,32 @@ module.exports = {
       pass: 'mongo',
       host: '127.0.0.1',
       port: '27017',
-      database: 'money',
+      database: 'money'
     },
-    conn: function(database) {
-      var uri = '';
-      if ((process.env.MONGODB_URI !== undefined)
-        && (process.env.MONGODB_URI !== null)) {
-        uri = process.env.MONGODB_URI;
-      }else {
+    conn: function (database) {
+      let uri = ''
+      if ((process.env.MONGODB_URI !== undefined) &&
+        (process.env.MONGODB_URI !== null)) {
+        uri = process.env.MONGODB_URI
+      } else {
         if (!database.auth) {
           uri = 'mongodb://' + database.host + ':' +
-            database.port + '/' + database.database;
+            database.port + '/' + database.database
         } else {
           uri = 'mongodb://' + database.username + ':' +
             database.password + '@' + database.host + ':' +
-            database.port + '/' + database.database;
+            database.port + '/' + database.database
         }
       }
-      return uri.toString();
-    },
+      return uri.toString()
+    }
   },
   webservice: {
     url: 'http://www.bccr.fi.cr/Indicadores/IndicadoresJSON.ashx',
     port: 80,
     method: 'GET',
     agent: false,
-    followAllRedirects: true,
+    followAllRedirects: true
   },
   metals: {
     gold: 'http://www.indexmundi.com/commodities/?commodity=gold',
@@ -42,43 +42,43 @@ module.exports = {
     aluminum: 'http://www.indexmundi.com/commodities/?commodity=aluminum',
     copper: 'http://www.indexmundi.com/commodities/?commodity=copper',
     diesel: 'http://www.indexmundi.com/commodities/?commodity=diesel',
-    gasoline: 'http://www.indexmundi.com/commodities/?commodity=gasoline',
+    gasoline: 'http://www.indexmundi.com/commodities/?commodity=gasoline'
   },
-  crypto:{
-    url: 'https://bittrex.com/api/v1.1/public/getmarketsummaries',
+  crypto: {
+    url: 'https://bittrex.com/api/v1.1/public/getmarketsummaries'
   },
   env: {
-    DEBUG: function() {
-      var value = false;
+    DEBUG: function () {
+      let value = false
       if ((process.env.DEBUG !== undefined) &&
         (process.env.DEBUG !== null)) {
-        value = JSON.parse(process.env.DEBUG);
+        value = JSON.parse(process.env.DEBUG)
       }
-      return value;
+      return value
     },
-    ACCOUNT_NAME: function() {
-      var value = '';
+    ACCOUNT_NAME: function () {
+      let value = ''
       if ((process.env.ACCOUNT_NAME !== undefined) &&
         (process.env.ACCOUNT_NAME !== null)) {
-        value = process.env.ACCOUNT_NAME;
+        value = process.env.ACCOUNT_NAME
       }
-      return value;
+      return value
     },
-    POSTING_KEY_PRV: function() {
-      var value = '';
+    POSTING_KEY_PRV: function () {
+      let value = ''
       if ((process.env.POSTING_KEY_PRV !== undefined) &&
         (process.env.POSTING_KEY_PRV !== null)) {
-        value = process.env.POSTING_KEY_PRV;
+        value = process.env.POSTING_KEY_PRV
       }
-      return value;
+      return value
     },
-    YEAR: function() {
-      var value = 2018;
+    YEAR: function () {
+      let value = 2018
       if ((process.env.YEAR !== undefined) &&
         (process.env.YEAR !== null)) {
-        value = parseInt(process.env.YEAR);
+        value = parseInt(process.env.YEAR)
       }
-      return value;
-    },
+      return value
+    }
   }
-};
+}

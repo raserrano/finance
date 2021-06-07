@@ -1,47 +1,46 @@
-var config = require('../config/current'),
-  mongoose = require('mongoose');
+const config = require('../config/current')
+const mongoose = require('mongoose')
 
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise
 
-
-var db = mongoose.connect(
+const db = mongoose.connect(
   config.database.conn(
     config.database.options
-    ),
-  );
+  )
+)
 
 // CONNECTION EVENTS
 // When successfully connected
-mongoose.connection.on('connected', function() {
+mongoose.connection.on('connected', function () {
   console.log('Mongoose default connection open to ' +
-    config.database.conn(config.database.options));
-});
+    config.database.conn(config.database.options))
+})
 
 // If the connection throws an error
-mongoose.connection.on('error',function(err) {
-  console.log('Mongoose default connection error: ' + err);
-});
+mongoose.connection.on('error', function (err) {
+  console.log('Mongoose default connection error: ' + err)
+})
 
 // When the connection is disconnected
-mongoose.connection.on('disconnected', function() {
-  console.log('Mongoose default connection disconnected');
-});
+mongoose.connection.on('disconnected', function () {
+  console.log('Mongoose default connection disconnected')
+})
 
 // If the Node process ends, close the Mongoose connection
-process.on('SIGINT', function() {
-  mongoose.connection.close(function() {
-    console.log('Mongoose default connection disconnected app termination');
-    process.exit(0);
-  });
-});
+process.on('SIGINT', function () {
+  mongoose.connection.close(function () {
+    console.log('Mongoose default connection disconnected app termination')
+    process.exit(0)
+  })
+})
 
 // Models
-require('../model/currencies');
-require('../model/cdps');
-require('../model/interests');
-require('../model/metals');
-require('../model/users');
-require('../model/markets');
-require('../model/cryptos');
+require('../model/currencies')
+require('../model/cdps')
+require('../model/interests')
+require('../model/metals')
+require('../model/users')
+require('../model/markets')
+require('../model/cryptos')
 
-module.exports = db;
+module.exports = db
