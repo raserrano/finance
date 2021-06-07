@@ -1,5 +1,4 @@
 const request = require('request')
-const wait = require('wait.for')
 const utils = require('../model/utils')
 config = require('../config/current')
 

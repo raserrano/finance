@@ -1,6 +1,5 @@
-const request = require('request')
+const axios = require('axios')
 const cheerio = require('cheerio')
-const wait = require('wait.for')
 const utils = require('../model/utils')
 const conf = require('../config/current')
 const db = require('../model/db')
@@ -25,11 +24,11 @@ function getURL (year, counter) {
   return request
 }
 
-wait.launchFiber(function () {
+async function main() {
   const year = conf.env.YEAR()
   for (let i = 366; i > 0; i--) {
     conf.webservice.url = getURL(year, i)
-    const res = wait.for(request, conf.webservice)
+    const res = await axios.get(conf.webservice)
     const $ = cheerio.load(res.body)
     let from = utils.getDate($(date_locator).text().trim())
     if (from != null && from != '') {
@@ -39,10 +38,11 @@ wait.launchFiber(function () {
         sell: $(sell_locator).text().trim().replace(/,/g, '.'),
         created_at: from
       }
-      wait.for(utils.upsertCurrency, currency)
+      console.log(currency)
+      //await utils.upsertCurrency(currency)
     }
   }
-  //  Var res = wait.for(utils.upsertCurrency,currency)
   console.log('Finish updating currency')
   process.exit()
-})
+}
+main();

@@ -1,5 +1,3 @@
-const
-  wait = require('wait.for')
 const conf = require('../config/current')
 const Metal = require('./metals')
 const Market = require('./markets')

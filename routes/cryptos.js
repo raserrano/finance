@@ -3,7 +3,6 @@ const router = express.Router()
 const Crypto = require('../model/cryptos') // Mongo connection
 const bodyParser = require('body-parser') // Parses information from POST'
 const utils = require('../model/utils')
-const wait = require('wait.for')
 const db = require('../model/db')
 const methodOverride = require('method-override') // Used to manipulate POST
 
