@@ -17,18 +17,16 @@ router.use(methodOverride(function (req, res) {
 }))
 
 router.route('/').get(function (req, res, next) {
-  wait.launchFiber(function () {
-    const markets = wait.for(utils.getMarkets)
-    const cryptos = wait.for(utils.getCryptos)
-    res.format({
-      html: function () {
-        res.render('cryptos/index', {
-          title: 'Daily cryptos price',
-          cryptos: cryptos,
-          markets: markets
-        })
-      }
-    })
+  const markets = await utils.getMarkets()
+  const cryptos = await utils.getCryptos()
+  res.format({
+    html: function () {
+      res.render('cryptos/index', {
+        title: 'Daily cryptos price',
+        cryptos: cryptos,
+        markets: markets
+      })
+    }
   })
 })
 
