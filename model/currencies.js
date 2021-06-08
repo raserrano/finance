@@ -1,26 +1,26 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
-var currencySchema = new Schema({
-  buy: { type: Number, required: true},
-  sell: { type: Number, required: true},
-  created_at: { 
-    type: Date, 
-    index: {unique: true,dropDups: true}, 
+const currencySchema = new Schema({
+  buy: { type: Number, required: true },
+  sell: { type: Number, required: true },
+  created_at: {
+    type: Date,
+    index: { unique: true, dropDups: true },
     required: true
   },
-  updated_at: Date,
-});
+  updated_at: Date
+})
 
-currencySchema.pre('save', function(next) {
-  var currentDate = new Date();
-  this.updated_at = currentDate;
+currencySchema.pre('save', function (next) {
+  const currentDate = new Date()
+  this.updated_at = currentDate
   if (!this.created_at) {
-    this.created_at = currentDate;
+    this.created_at = currentDate
   }
-  next();
-  console.log('Currency created!');
-});
+  next()
+  console.log('Currency created!')
+})
 
-module.exports = mongoose.model('Currency', currencySchema);
+module.exports = mongoose.model('Currency', currencySchema)

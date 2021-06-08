@@ -1,21 +1,21 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
-var metalSchema = new Schema({
-  price: { type: String, required: true},
-  type: { type: String, required: true},
+const metalSchema = new Schema({
+  price: { type: String, required: true },
+  type: { type: String, required: true },
   metal: String,
   value: Number,
-  created_at: Date,
-});
+  created_at: Date
+})
 
-metalSchema.pre('save', function(next) {
-  var currentDate = new Date();
+metalSchema.pre('save', function (next) {
+  const currentDate = new Date()
   if (!this.created_at) {
-    this.created_at = currentDate;
+    this.created_at = currentDate
   }
-  next();
-});
+  next()
+})
 
-module.exports = mongoose.model('Metal', metalSchema);
+module.exports = mongoose.model('Metal', metalSchema)
