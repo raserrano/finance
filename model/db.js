@@ -6,7 +6,12 @@ mongoose.Promise = global.Promise
 const db = mongoose.connect(
   config.database.conn(
     config.database.options
-  )
+  ),
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
 )
 
 // CONNECTION EVENTS

@@ -25,20 +25,20 @@ function saveMetal (body, type) {
     metal.price = (metal.price * 42)
   }
   console.log(metal)
-  // Metal.create(metal, function (err) {
-  //   if (err) {
-  //     throw err
-  //   }
-  // })
+  Metal.create(metal, function (err) {
+    if (err) {
+      throw err
+    }
+  })
 }
 
-  const types = config.metals
-async function main(){
+const types = config.metals
+async function main () {
   for (const key in types) {
     const metal = await axios.get(types[key])
-    let result = await saveMetal(metal.data, key)
+    const result = await saveMetal(metal.data, key)
   }
   console.log('Finish updating metals')
-//  process.exit()
+  process.exit()
 }
-main();
+main()

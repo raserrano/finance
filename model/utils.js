@@ -3,7 +3,6 @@ const Metal = require('./metals')
 const Market = require('./markets')
 const Crypto = require('./cryptos')
 const Currency = require('./currencies')
-const db = require('./db')
 
 module.exports = {
   upsertMarket: function (query, doc, callback) {
@@ -37,6 +36,7 @@ module.exports = {
     const months = [
       'ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'set', 'oct', 'nov', 'dic'
     ]
+    console.log(mon)
     let value = null
     if (undefined !== mon) {
       value = months.indexOf(mon.toLowerCase()) + 1
@@ -44,9 +44,11 @@ module.exports = {
     return value
   },
   getDate: function (date) {
+    console.log(`Date is ${date}`)
     let from = null
     if (date != null && date != '') {
       const parts = date.split(' ')
+      console.log(parts)
       from = Date.parse(
         parts[2] + '-' + this.getMonth(parts[1]) + '-' + parts[0]
       )

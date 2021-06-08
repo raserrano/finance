@@ -16,7 +16,7 @@ router.use(methodOverride(function (req, res) {
   }
 }))
 
-router.route('/').get(function (req, res, next) {
+router.route('/').get(async function (req, res, next) {
   const markets = await utils.getMarkets()
   const cryptos = await utils.getCryptos()
   res.format({

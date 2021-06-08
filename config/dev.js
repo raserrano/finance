@@ -73,7 +73,7 @@ module.exports = {
       return value
     },
     YEAR: function () {
-      let value = 2018
+      let value = new Date().getFullYear()
       if ((process.env.YEAR !== undefined) &&
         (process.env.YEAR !== null)) {
         value = parseInt(process.env.YEAR)
