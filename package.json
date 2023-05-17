@@ -29,22 +29,22 @@
   },
   "homepage": "https://github.com/raserrano/finance#readme",
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint": "^8.40.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.2.0",
-    "nodemon": "^2.0.20"
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^2.0.22"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^7.3.2",
-    "axios": "^0.21.4",
-    "body-parser": "^1.19.0",
-    "cheerio": "^1.0.0-rc.9",
+    "@cucumber/cucumber": "^9.1.2",
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "cheerio": "^1.0.0-rc.12",
     "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
     "method-override": "^3.0.0",
-    "mongoose": "^5.13.15",
+    "mongoose": "^7.1.1",
     "morgan": "^1.10.0",
     "pug": "^3.0.2"
   }
