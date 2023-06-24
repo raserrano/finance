@@ -2,7 +2,7 @@ const axios = require('axios')
 const utils = require('../model/utils')
 config = require('../config/current')
 
-async function main() {
+async function main () {
   const economy = await axios.get(config.webservice)
   console.log(economy.body)
   const data = JSON.parse(economy.body)

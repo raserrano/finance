@@ -10,7 +10,7 @@ const sell_locator = '#theTable400 > tbody > tr:nth-child(2) > td:nth-child(3) >
 
 function getURL (year, counter) {
   // https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=400&Idioma=1&FecInicial=2021/01/01&FecFinal=2022/12/31&Filtro=1
-  const base_url = 'https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?'
+  const base_url = 'https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx'
   let request = null
   if (counter != 1) {
     request = base_url +
@@ -21,19 +21,19 @@ function getURL (year, counter) {
       '?CodCuadro=400&Idioma=1&FecInicial=' + year +
       '/01/01&FecFinal=' + year + '/01/01&Filtro=' + counter
   }
-  assert.equal(request,'https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=400&Idioma=1&FecInicial=2021/01/01&FecFinal=2022/12/31&Filtro=1')
+  // assert.equal(request,'https://gee.bccr.fi.cr/indicadoreseconomicos/Cuadros/frmVerCatCuadro.aspx?CodCuadro=400&Idioma=1&FecInicial=2021/01/01&FecFinal=2022/12/31&Filtro=1')
   return request
 }
 
-async function main() {
+async function main () {
   const year = conf.env.YEAR()
   for (let i = 1; i < 367; i++) {
     const res = await axios.get(getURL(year, i))
-    console.log(res)
+    // console.log(res.data)
     const $ = cheerio.load(res.data)
-    console.log($(date_locator),$(date_locator).text(),$(buy_locator).text(),$(sell_locator).text())
+    // console.log($(date_locator),$(date_locator).text(),$(buy_locator).text(),$(sell_locator).text())
     let from = utils.getDate($(date_locator).text().trim())
-    console.log(from)
+    // console.log(from)
     if (from != null && from != '') {
       from = new Date(from)
       const currency = {
@@ -42,11 +42,10 @@ async function main() {
         created_at: from
       }
       console.log(currency)
-      //await utils.upsertCurrency(currency)
+      await utils.upsertCurrency(currency)
     }
-    break;
   }
   console.log('Finish updating currency')
   process.exit()
 }
-main();
+main()
