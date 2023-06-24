@@ -14,29 +14,22 @@ router.use(methodOverride(function (req, res) {
   }
 }))
 
-router.route('/').get(function (req, res, next) {
+router.route('/').get(async function (req, res, next) {
   let limit = 30
   if (req.query.period) {
     limit = req.query.period
   }
   const cutoff = new Date()
   cutoff.setDate(cutoff.getDate() - limit)
-  Metal.find({ created_at: { $gt: cutoff } }).sort({ created_at: -1 }).exec(
-    function (err, metals) {
-      if (err) {
-        return console.error(err)
-      } else {
-        res.format({
-          html: function () {
-            res.render('metals/index', {
-              title: 'Daily metals price',
-              metals: metals
-            })
-          }
-        })
-      }
+  const metals = await Metal.find({ created_at: { $gt: cutoff } }).sort({ created_at: -1 }).exec()
+  res.format({
+    html: function () {
+      res.render('metals/index', {
+        title: 'Daily metals price',
+        metals
+      })
     }
-  )
+  })
 })
 
 module.exports = router

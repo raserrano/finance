@@ -23,8 +23,8 @@ router.route('/').get(async function (req, res, next) {
     html: function () {
       res.render('cryptos/index', {
         title: 'Daily cryptos price',
-        cryptos: cryptos,
-        markets: markets
+        cryptos,
+        markets
       })
     }
   })

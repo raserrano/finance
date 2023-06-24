@@ -4,7 +4,7 @@ const config = require('../config/current')
 const db = require('../model/db')
 const Metal = require('../model/metals')
 
-function saveMetal (body, type) {
+async function saveMetal (body, type) {
   const $ = cheerio.load(body)
 
   const metal = {
@@ -25,11 +25,7 @@ function saveMetal (body, type) {
     metal.price = (metal.price * 42)
   }
   console.log(metal)
-  Metal.create(metal, function (err) {
-    if (err) {
-      throw err
-    }
-  })
+  await Metal.create(metal)
 }
 
 const types = config.metals

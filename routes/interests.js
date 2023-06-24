@@ -24,7 +24,7 @@ router.route('/').get(function (req, res, next) {
           html: function () {
             res.render('interests/index', {
               title: 'Active Interest rates',
-              interests: interests
+              interests
             })
           }
         })

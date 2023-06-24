@@ -34,10 +34,10 @@ router.route('/calculate').post(function (req, res, nex) {
     amortization = payment - interest
     amount = amount - amortization
     data.push({
-      period: period,
-      amount: amount,
-      interest: interest,
-      amortization: amortization
+      period,
+      amount,
+      interest,
+      amortization
     })
     period--
   }
@@ -45,7 +45,7 @@ router.route('/calculate').post(function (req, res, nex) {
     html: function () {
       res.render('loans/results', {
         title: 'Loans',
-        data: data
+        data
       })
     }
   })

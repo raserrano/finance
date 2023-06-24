@@ -23,7 +23,7 @@ router.route('/').get(function (req, res, next) {
         html: function () {
           res.render('cdps/index', {
             title: 'All CDPs',
-            cdps: cdps
+            cdps
           })
         }
       })

@@ -5,10 +5,10 @@ const Schema = mongoose.Schema
 const marketSchema = new Schema({
   low: { type: Number, required: true },
   high: { type: Number, required: true },
-  vol: { type: Number, required: true },
+  volume: { type: Number, required: true },
   last: { type: Number, required: true },
-  name: { type: String, required: true },
-  updated: Date
+  symbol: { type: String, required: true },
+  updatedAt: Date
 })
 
 marketSchema.pre('save', function (next) {

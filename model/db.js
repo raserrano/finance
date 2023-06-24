@@ -8,9 +8,9 @@ const db = mongoose.connect(
     config.database.options
   ),
   {
-    useCreateIndex: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    family: 4
   }
 )
 
