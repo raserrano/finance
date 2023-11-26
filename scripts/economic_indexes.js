@@ -1,6 +1,6 @@
 const axios = require('axios')
 const utils = require('../model/utils')
-config = require('../config/current')
+const config = require('../config/current')
 
 async function main () {
   const economy = await axios.get(config.webservice)
@@ -11,7 +11,7 @@ async function main () {
     sell: data.TipoCambioVenta.replace(/,/g, '.'),
     created_at: new Date()
   }
-  const res = wait.for(utils.upsertCurrency, currency)
+  await utils.upsertCurrency(currency)
   console.log('Finish updating currency')
   process.exit()
 }
