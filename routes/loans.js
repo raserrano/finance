@@ -31,7 +31,7 @@ router.route('/calculate').post(function (req, res, nex) {
   const data = []
   while (period > 0) {
     const interest = ((rate / 100) / 12) * amount
-    amortization = payment - interest
+    const amortization = payment - interest
     amount = amount - amortization
     data.push({
       period,

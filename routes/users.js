@@ -1,8 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../model/users') // Mongo connection
-const bodyParser = require('body-parser') // Parses information from POST
-const methodOverride = require('method-override') // Used to manipulate POST
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {

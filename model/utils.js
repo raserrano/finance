@@ -1,5 +1,3 @@
-const conf = require('../config/current')
-const Metal = require('./metals')
 const Market = require('./markets')
 const Crypto = require('./cryptos')
 const Currency = require('./currencies')
@@ -24,7 +22,7 @@ module.exports = {
       }
     )
   },
-  upsertCurrency: function (doc, callback) {
+  upsertCurrency: async function (doc) {
     return Currency.updateOne(
       { created_at: doc.created_at }, doc, { upsert: true, new: true }
     )
@@ -44,7 +42,7 @@ module.exports = {
   getDate: function (date) {
     // console.log(`Date is ${date}`)
     let from = null
-    if (date != null && date != '') {
+    if (date !== null && date !== '') {
       const parts = date.split(' ')
       // console.log(parts)
       from = Date.parse(

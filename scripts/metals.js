@@ -1,7 +1,6 @@
 const axios = require('axios')
 const cheerio = require('cheerio')
 const config = require('../config/current')
-const db = require('../model/db')
 const Metal = require('../model/metals')
 
 async function saveMetal (body, type) {
@@ -32,7 +31,7 @@ const types = config.metals
 async function main () {
   for (const key in types) {
     const metal = await axios.get(types[key])
-    const result = await saveMetal(metal.data, key)
+    await saveMetal(metal.data, key)
   }
   console.log('Finish updating metals')
   process.exit()
