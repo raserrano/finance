@@ -1,6 +1,6 @@
 module.exports = {
   default: {
     parallel: 2,
-    format: ['html:cucumber-report.html']
+    format: ['html:output/cucumber-report.html']
   }
 }

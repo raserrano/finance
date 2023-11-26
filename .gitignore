@@ -40,3 +40,4 @@ jspm_packages
 db
 # Docker compose data folder for DB
 data
+output
