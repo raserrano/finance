@@ -30,28 +30,29 @@
   },
   "homepage": "https://github.com/raserrano/finance#readme",
   "devDependencies": {
-    "@commitlint/config-conventional": "^19.1.0",
-    "commitlint": "^19.2.1",
-    "eslint": "^8.57.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "commitlint": "^19.5.0",
+    "eslint": "^9.13.0",
     "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.12.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "nodemon": "^3.1.0"
+    "eslint-plugin-promise": "^7.1.0",
+    "nodemon": "^3.1.7",
+    "npm-check-updates": "^17.1.9"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^10.3.2",
-    "axios": "^1.6.8",
-    "body-parser": "^1.20.2",
-    "cheerio": "^1.0.0-rc.12",
-    "cookie-parser": "^1.4.6",
-    "express": "^4.19.2",
-    "husky": "^9.0.11",
+    "@cucumber/cucumber": "^11.0.1",
+    "axios": "^1.7.7",
+    "body-parser": "^1.20.3",
+    "cheerio": "^1.0.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.1",
+    "husky": "^9.1.6",
     "method-override": "^3.0.0",
-    "mongoose": "^8.2.3",
+    "mongoose": "^8.7.3",
     "morgan": "^1.10.0",
-    "pug": "^3.0.2",
-    "selenium-webdriver": "^4.19.0"
+    "pug": "^3.0.3",
+    "selenium-webdriver": "^4.26.0"
   }
 }
