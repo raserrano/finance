@@ -45,7 +45,7 @@
     "husky": "^9.1.7",
     "method-override": "^3.0.0",
     "mongoose": "^8.13.2",
-    "morgan": "^1.10.0",
+    "morgan": "^1.10.1",
     "pug": "^3.0.3",
     "selenium-webdriver": "^4.31.0",
     "standard": "^17.1.2"
