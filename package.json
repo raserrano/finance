@@ -30,24 +30,24 @@
   },
   "homepage": "https://github.com/raserrano/finance#readme",
   "devDependencies": {
-    "@commitlint/config-conventional": "^21.0.1",
-    "commitlint": "^21.0.1",
+    "@commitlint/config-conventional": "^21.1.0",
+    "commitlint": "^21.1.0",
     "nodemon": "^3.1.14",
-    "npm-check-updates": "^22.2.1"
+    "npm-check-updates": "^22.2.7"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^12.9.0",
-    "axios": "^1.16.1",
-    "body-parser": "^2.2.2",
+    "@cucumber/cucumber": "^13.0.0",
+    "axios": "^1.18.1",
+    "body-parser": "^2.3.0",
     "cheerio": "^1.2.0",
     "cookie-parser": "^1.4.7",
     "express": "^5.2.1",
     "husky": "^9.1.7",
     "method-override": "^3.0.0",
-    "mongoose": "^9.6.2",
-    "morgan": "^1.10.1",
+    "mongoose": "^9.7.2",
+    "morgan": "^1.11.0",
     "pug": "^3.0.4",
-    "selenium-webdriver": "^4.44.0",
+    "selenium-webdriver": "^4.45.0",
     "standard": "^17.1.2"
   }
 }
