@@ -36,7 +36,7 @@
     "npm-check-updates": "^22.2.9"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^13.0.0",
+    "@cucumber/cucumber": "^13.1.0",
     "axios": "^1.18.1",
     "body-parser": "^2.3.0",
     "cheerio": "^1.2.0",
@@ -47,7 +47,7 @@
     "mongoose": "^9.7.4",
     "morgan": "^1.11.0",
     "pug": "^3.0.4",
-    "selenium-webdriver": "^4.45.0",
+    "selenium-webdriver": "^4.46.0",
     "standard": "^17.1.2"
   }
 }
