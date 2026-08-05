@@ -33,18 +33,18 @@
     "@commitlint/config-conventional": "^21.2.0",
     "commitlint": "^21.2.1",
     "nodemon": "^3.1.14",
-    "npm-check-updates": "^22.2.9"
+    "npm-check-updates": "^23.0.1"
   },
   "dependencies": {
-    "@cucumber/cucumber": "^13.1.0",
-    "axios": "^1.18.1",
+    "@cucumber/cucumber": "^13.2.1",
+    "axios": "^1.19.0",
     "body-parser": "^2.3.0",
     "cheerio": "^1.2.0",
     "cookie-parser": "^1.4.7",
     "express": "^5.2.1",
     "husky": "^9.1.7",
     "method-override": "^3.0.0",
-    "mongoose": "^9.7.4",
+    "mongoose": "^9.9.1",
     "morgan": "^1.11.0",
     "pug": "^3.0.4",
     "selenium-webdriver": "^4.46.0",
